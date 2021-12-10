@@ -45,7 +45,7 @@
                                     <label for="formCheck" class="form-check-label">Remember me</label>
 
                                     <div class="forget float-end">
-                                        <a class="text-decoration-none" href="#" id="forget-link">Forget Password?</a>
+                                        <a class="text-decoration-none" href="#" id="forget-link">Forgotten Password?</a>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
 
                     <!-- first card Start-->
                     <div class="card justify-content-center myColor p-4">
-                        <h1 class="text-center fw-bold text-light">Forget Password!</h1>
+                        <h1 class="text-center fw-bold text-light">Forgot Password!</h1>
                         <hr class="my-3 myHr">
                         
                         <div class="text-center">
@@ -145,7 +145,7 @@
                     <!-- 2nd card start-->
                     
                     <div class="card rounded-start rounded-0 p-4" style="flex-grow: 1.4;">
-                        <h1 class="text-center fw-bold text-primary">Forget Your Password</h1>
+                        <h1 class="text-center fw-bold text-primary">Forgot Your Password</h1>
                         <hr class="my-3">
                         <p class="text-center lead text-secondary my-3">To reset your password enter the registered e-mail address and we will send you password reset instruction on your e-mail!</p>
 
