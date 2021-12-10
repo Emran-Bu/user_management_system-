@@ -107,14 +107,17 @@
                                 </span>
                                 <input class="form-control rounded-0" type="password" name="password" id="rpassword" placeholder="Password" minlength="5" required>
                             </div>
-                            <div class="input-group mb-3 form-group">
+                            <div class="input-group mb-1 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="fas fa-key fa-lg"></i>
                                 </span>
                                 <input class="form-control rounded-0" type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" minlength="5" required>
                             </div>
+                            <div class="mb-3">
+                                <span class="text-danger"><i id="passErr"></i></span>
+                            </div>
                             <div class="form-group d-grid mt-4 pb-2">
-                                <input class="btn btn-primary btn-lg myBtn rounded-pill" type="submit" value="Sign Up" id="login-btn">
+                                <input class="btn btn-primary btn-lg myBtn rounded-pill" type="submit" value="Sign Up" id="register-btn">
                             </div>
                         </form>
                     </div>
@@ -197,6 +200,25 @@
                 $("#forget-box").hide('slow');
                 $("#login-box").show('slow');
             })
+
+            // Register ajax request
+            $("#register-btn").click(function(e){
+                if ($("#register-form")[0].checkValidity()) {
+                    e.preventDefault();
+
+                    $("#register-btn").val("Please Wait...")
+                    if ($("#rpassword").val() != $("#cpassword").val()) {
+                        $("#passErr").text('* Password did not matched!');
+                        $("#register-btn").val("Sign Up");
+                    } else{
+                        $("#passErr").text('');
+                        $.ajax({
+                            url : assets/php/action.php,
+                        });
+                    }
+                }
+            })
+
         })
     </script>
 </body>
