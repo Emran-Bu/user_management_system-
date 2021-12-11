@@ -18,6 +18,24 @@
 
             return $this->conn;
         }
+
+        // check input
+        public function test_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
+        // error success message alert
+        public function showMessage($type, $message)
+        {
+            return '<div class="text-center alert alert-'.$type.' alert-dismissible p-1">
+                <strong>'.$message.'</strong>
+                <button type="button" class="btn" data-bs-dismiss="alert" style="font-size: 20px; margin-bottom: 8px;">&times;</button>
+            </div>';
+        }
     }
 
 ?>

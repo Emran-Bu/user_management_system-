@@ -213,7 +213,14 @@
                     } else{
                         $("#passErr").text('');
                         $.ajax({
-                            url : assets/php/action.php,
+                            url : 'assets/php/action.php',
+                            method : 'post',
+                            data : $("#register-form").serialize()+'&action=register',
+                            success : function(response){
+                                $("#register-btn").val("Sign Up");
+                                console.log(response);
+                            }
+
                         });
                     }
                 }
