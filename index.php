@@ -32,18 +32,18 @@
                                 <span class="input-group-text rounded-0">
                                     <i class="far fa-envelope fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="email" name="email" id="email" placeholder="E-Mail" required>
+                                <input class="form-control rounded-0" type="email" name="email" id="email" placeholder="E-Mail" value="<?php if(isset($_COOKIE['email'])){echo $_COOKIE['email'];} ?>" required>
                             </div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="fas fa-key fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="password" name="password" id="password" placeholder="Password" required>
+                                <input class="form-control rounded-0" type="password" name="password" id="password" placeholder="Password" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" required>
                             </div>
                             <div class="form-group mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input float-start" type="checkbox" name="rem" id="formCheck">
-                                    <label for="formCheck" class="form-check-label">Remember me</label>
+                                    <input class="form-check-input float-start" type="checkbox" name="rem" id="formCheck" <?php if(isset($_COOKIE['email'])){ ?> checked <?php } ?> >
+                                    <label for="formCheck" class="form-check-label" >Remember me</label>
 
                                     <div class="forget float-end">
                                         <a class="text-decoration-none" href="#" id="forget-link">Forgotten Password?</a>
