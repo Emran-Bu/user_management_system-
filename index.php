@@ -27,6 +27,7 @@
                         <h1 class="text-center fw-bold text-primary">Sign in to Account</h1>
                         <hr class="my-3">
                         <form action="" method="post" class="px-3" id="login-form">
+                            <div id="regAlert"></div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="far fa-envelope fa-lg"></i>
@@ -229,9 +230,31 @@
                         });
                     }
                 }
-            })
+            });
 
-        })
+            //login ajax request
+            $("#login-btn").click(function(e){
+                if($("#login-form")[0].checkValidity()){
+                    e.preventDefault();
+
+                    $("#login-btn").val('Please Wait...');
+
+                    $.ajax({
+                        url : 'assets/php/action.php',
+                        method : 'post',
+                        data : $("#login-form").serialize()+'&action=login',
+                        success : function(response){
+                            $("#login-btn").val('Sign In');
+                            if(response === 'login'){
+                                window.location = 'home.php';
+                            } else {
+                                $('#regAlert').html(response);
+                            }
+                        }
+                    });
+                }
+            })
+        });
     </script>
 </body>
 </html>

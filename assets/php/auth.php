@@ -19,7 +19,18 @@
             $stmt->execute(['email'=>$email]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
-        }  
+        }
+        
+        // login existing user
+        public function login($email){
+            $sql = "SELECT email, password FROM users WHERE email = :email AND deleted != 0";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email'=>$email]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $row;
+        }
     }
 
 ?>
