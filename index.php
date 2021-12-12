@@ -34,7 +34,7 @@
                         <h1 class="text-center fw-bold text-primary">Sign in to Account</h1>
                         <hr class="my-3">
                         <form action="" method="post" class="px-3" id="login-form">
-                            <div id="regAlert"></div>
+                            <div id="logAlert"></div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="far fa-envelope fa-lg"></i>
@@ -162,6 +162,7 @@
                         <p class="text-center lead text-secondary my-3">To reset your password enter the registered e-mail address and we will send you password reset instruction on your e-mail!</p>
 
                         <form action="" method="post" class="px-3" id="forget-form">
+                            <div id="forgotAlert"></div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="far fa-envelope fa-lg"></i>
@@ -255,12 +256,32 @@
                             if(response === 'login'){
                                 window.location = 'home.php';
                             } else {
-                                $('#regAlert').html(response);
+                                $('#logAlert').html(response);
                             }
                         }
                     });
                 }
-            })
+            });
+
+            // forgot password ajax request
+            $("#forget-btn").click(function(e){
+                if($("#forget-form")[0].checkValidity()){
+                    e.preventDefault();
+
+                    $("#forget-btn").val('Please Wait...');
+
+                    $.ajax({
+                        url : 'assets/php/action.php',
+                        method : 'post',
+                        data : $('#forget-form').serialize()+'&action=forgot',
+                        success : function(response){
+                            $("#forget-btn").val('Reset Password');
+                            $("#forget-form")[0].reset();
+                            $("#forgotAlert").html(response);
+                        }
+                    });
+                }
+            });
         });
     </script>
 </body>
