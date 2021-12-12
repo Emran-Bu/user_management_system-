@@ -2,6 +2,14 @@
 
     session_start();
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'vendor/autoload.php';
+
+    $mail = new PHPMailer(true);
+
     require_once 'auth.php';
 
     $user = new Auth();
@@ -64,7 +72,36 @@
             $token = str_shuffle($token);
 
             $user->forgot_password($token, $email);
-            
+
+            try {
+                // server settings
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = ;
+                $mail->Password = ;
+                // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                // $mail->Port = 587;
+                $mail->Port = 465;
+
+                // recipients
+                $mail->setFrom();
+                $mail->addAddress($email);
+
+                // content
+                $mail->isHTML(true);
+                $mail->Subject = 'Reset Password';
+                $mail->Body = '<h3>Click the below link to reset your password.<br><a href="http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'">http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'</a><br>Regards<br>Emran Hasan</h3>';
+
+                $mail->send();
+                echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail!');
+
+            } catch(Exception $e){
+                echo $user->showMessage('danger', 'Something went wrong please try again later!');
+            }
+        } else {
+            echo $user->showMessage('warning', 'This email is not registered!');
         }
     }
 
