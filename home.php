@@ -1,7 +1,8 @@
 <?php
 
-    session_start();
-    echo $_SESSION['user'];
+    require_once 'assets/php/session.php';
+    
+    print_r($data);
 
 ?>
 <br>

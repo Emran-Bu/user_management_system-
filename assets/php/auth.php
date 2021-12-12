@@ -31,6 +31,16 @@
 
             return $row;
         }
+
+        // current user in session
+        public function currentUser($email){
+            $sql = "SELECT * FROM users WHERE email = :email AND deleted != 0";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email'=>$email]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $row;
+        }
     }
 
 ?>
