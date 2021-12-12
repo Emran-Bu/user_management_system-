@@ -64,6 +64,7 @@
             $token = str_shuffle($token);
 
             $user->forgot_password($token, $email);
+            
         }
     }
 
