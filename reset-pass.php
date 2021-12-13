@@ -18,7 +18,9 @@
 
                 if ($newpass == $cnewpass) {
                     $user->update_new_password($hnewpass, $email);
-                    $succMsg = $user->showMessage('success', 'Password Change successfully!<br><a class="btn btn-info" href="index.php">Login Here!</a>');
+                    $succMsg = $user->showMessage('success', 'Password Changed successfully!');
+
+                    $loginMsg = '<div class="text-center mb-3"><a class="btn btn-info" href="index.php">Login Here!</a></div>';
                 } else {
                     $errorMsg = $user->showMessage('danger', 'Password did not matched!');
                 }
@@ -47,7 +49,7 @@
 
     <!-- custom css links -->
     <link rel="stylesheet" href="assets/css/custom/style.css">
-    <title>User | Systems</title>
+    <title>Reset | Password</title>
 </head>
 <body>
     
@@ -73,6 +75,9 @@
                                 if (isset($_POST['subResetPass'])) {
                                     if (isset($succMsg)) {
                                         echo $succMsg;
+                                        if (isset($loginMsg)) {
+                                            echo $loginMsg;
+                                        }
                                     } else {
                                         echo $errorMsg;
                                     }
@@ -82,13 +87,13 @@
                                 <span class="input-group-text rounded-0">
                                     <i class="fas fa-key fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="password" name="pass" id="pass" placeholder="Password" required>
+                                <input class="form-control rounded-0" type="password" name="pass" id="pass" placeholder="Password"  minlength="5" required>
                             </div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="fas fa-key fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="password" name="cpass" id="cpass" placeholder="Confirm Password" required>
+                                <input class="form-control rounded-0" type="password" name="cpass" id="cpass" placeholder="Confirm Password" minlength="5" required>
                             </div>
                             <div class="form-group d-grid mt-4 pb-2">
                                 <input class="btn btn-primary btn-lg myBtn rounded-pill" type="submit" name="subResetPass" value="Reset Password" id="reset-btn">

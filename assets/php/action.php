@@ -87,7 +87,7 @@
                 $mail->Port = 465;
 
                 // recipients
-                $mail->setFrom(Database::USERNAME, 'Emran Hasan');
+                $mail->setFrom(Database::USERNAME, 'User Management System');
                 $mail->addAddress($email);
 
                 // content
@@ -96,7 +96,7 @@
                 $mail->Body = '<h3>Click the below link to reset your password.<br><br><a href="http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'">http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'</a><br><br>Regards<br>Emran Hasan</h3>';
 
                 $mail->send();
-                echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail!');
+                echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail inbox and spam folder!');
 
             } catch(Exception $e){
                 echo $user->showMessage('danger', 'Something went wrong please try again later!');
