@@ -82,7 +82,7 @@
                 
                 <div class="card-group myShadow">
                     <!-- first card Start-->
-                    <div class="card justify-content-center myColor p-4">
+                    <div class="card justify-content-center rounded-start rounded-0 myColor p-4">
                         <h1 class="text-center fw-bold text-light">Welcome Back!</h1>
                         <hr class="my-3 myHr">
                         <p class="text-center text-light fw-bolder lead my-3">To keep connected with us please login with your personal info!</p>
@@ -93,7 +93,7 @@
                     <!-- first card End-->
 
                     <!-- 2nd card Start-->
-                    <div class="card rounded-start rounded-0 p-4" style="flex-grow: 1.4;">
+                    <div class="card p-4" style="flex-grow: 1.4;">
                         <h1 class="text-center fw-bold text-primary">Create Account</h1>
                         <hr class="my-3">
                         <form action="" method="post" class="px-3" id="register-form">
@@ -144,7 +144,7 @@
                 <div class="card-group myShadow">
 
                     <!-- first card Start-->
-                    <div class="card justify-content-center myColor p-4">
+                    <div class="card justify-content-center rounded-start rounded-0 myColor p-4">
                         <h1 class="text-center fw-bold text-light">Forgot Password!</h1>
                         <hr class="my-3 myHr">
                         
@@ -156,7 +156,7 @@
 
                     <!-- 2nd card start-->
                     
-                    <div class="card rounded-start rounded-0 p-4" style="flex-grow: 1.4;">
+                    <div class="card p-4" style="flex-grow: 1.4;">
                         <h1 class="text-center fw-bold text-primary">Forgot Your Password</h1>
                         <hr class="my-3">
                         <p class="text-center lead text-secondary my-3">To reset your password enter the registered e-mail address and we will send you password reset instruction on your e-mail!</p>

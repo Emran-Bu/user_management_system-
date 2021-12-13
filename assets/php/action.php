@@ -3,9 +3,9 @@
     session_start();
 
     use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
-
+    use PHPMailer\PHPMailer\SMTP;
+    
     require 'vendor/autoload.php';
 
     $mail = new PHPMailer(true);
@@ -75,24 +75,25 @@
 
             try {
                 // server settings
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = ;
-                $mail->Password = ;
-                // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                
+                $mail->Username = Database::USERNAME;
+                $mail->Password = Database::PASSWORD;
+                
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                // $mail->Port = 587;
                 $mail->Port = 465;
 
                 // recipients
-                $mail->setFrom();
+                $mail->setFrom(Database::USERNAME, 'Emran Hasan');
                 $mail->addAddress($email);
 
                 // content
                 $mail->isHTML(true);
                 $mail->Subject = 'Reset Password';
-                $mail->Body = '<h3>Click the below link to reset your password.<br><a href="http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'">http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'</a><br>Regards<br>Emran Hasan</h3>';
+                $mail->Body = '<h3>Click the below link to reset your password.<br><br><a href="http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'">http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'</a><br><br>Regards<br>Emran Hasan</h3>';
 
                 $mail->send();
                 echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail!');
