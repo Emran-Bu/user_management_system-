@@ -28,8 +28,9 @@
         <!-- Login Form Start -->
         <div class="row wrapper justify-content-center" id="login-box">
             <div class="col-lg-10 my-auto">
-                <!-- first card -->
+                
                 <div class="card-group myShadow">
+                    <!-- first card start -->
                     <div class="card rounded-start rounded-0 p-4" style="flex-grow: 1.4;">
                         <h1 class="text-center fw-bold text-primary">Sign in to Account</h1>
                         <hr class="my-3">
@@ -62,7 +63,9 @@
                             </div>
                         </form>
                     </div>
-                    <!-- 2nd card -->
+                    <!-- first card end -->
+
+                    <!-- 2nd card start-->
                     <div class="card justify-content-center myColor p-4">
                         <h1 class="text-center fw-bold text-light">Hello Friends!</h1>
                         <hr class="my-3 myHr">
@@ -71,6 +74,7 @@
                             <button class="btn btn-outline-light btn-lg fw-bolder mt-4 w-50 rounded-pill myLinkBtn" id="login-link">Sign Up</button>
                         </div>
                     </div>
+                    <!-- 2nd card end -->
                 </div>
             </div>
         </div>

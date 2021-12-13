@@ -1,8 +1,35 @@
 <?php
-    session_start();
+    require_once 'assets/php/auth.php';
 
-    if (isset($_SESSION['user'])) {
-        header('location:home.php');
+    $user = new Auth();
+
+    if (isset($_GET['email']) && isset($_GET['token'])) {
+        $email = $user->test_input($_GET['email']);
+        $token = $user->test_input($_GET['token']);
+
+        $auth_user = $user->reset_pass_auth($email, $token);
+
+        if ($auth_user != null) {
+            if (isset($_POST['subResetPass'])) {
+                $newpass = $_POST['pass'];
+                $cnewpass = $_POST['cpass'];
+
+                $hnewpass = password_hash($cnewpass, PASSWORD_DEFAULT);
+
+                if ($newpass == $cnewpass) {
+                    $user->update_new_password($hnewpass, $email);
+                    $succMsg = $user->showMessage('success', 'Password Change successfully!<br><a class="btn btn-info" href="index.php">Login Here!</a>');
+                } else {
+                    $errorMsg = $user->showMessage('danger', 'Password did not matched!');
+                }
+            }
+        } else {
+            header('location:index.php');
+            exit();
+        }
+    } else {
+        header('location:index.php');
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -26,55 +53,52 @@
     
     <div class="container">
         <!-- Login Form Start -->
-        <div class="row wrapper justify-content-center" id="login-box">
+        <div class="row wrapper justify-content-center" id="reset-box">
             <div class="col-lg-10 my-auto">
-                <!-- first card -->
+                
                 <div class="card-group myShadow">
-                    <div class="card rounded-start rounded-0 p-4" style="flex-grow: 1.4;">
-                        <h1 class="text-center fw-bold text-primary">Sign in to Account</h1>
+
+                    <!-- first card -->
+                    <div class="card justify-content-center rounded-start rounded-0 myColor p-4">
+                        <h1 class="text-center fw-bold text-light">Reset Your Password!</h1>
+                    </div>
+                    <!-- first card end -->
+
+                    <!-- 2nd card start-->
+                    <div class="card rounded-end rounded-0 p-4" style="flex-grow: 2;">
+                        <h1 class="text-center fw-bold text-primary">Enter New Password!</h1>
                         <hr class="my-3">
                         <form action="" method="post" class="px-3" id="login-form">
-                            <div id="logAlert"></div>
+                            <?php
+                                if (isset($_POST['subResetPass'])) {
+                                    if (isset($succMsg)) {
+                                        echo $succMsg;
+                                    } else {
+                                        echo $errorMsg;
+                                    }
+                                }
+                            ?>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
-                                    <i class="far fa-envelope fa-lg"></i>
+                                    <i class="fas fa-key fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="email" name="email" id="email" placeholder="E-Mail" value="<?php if(isset($_COOKIE['email'])){echo $_COOKIE['email'];} ?>" required>
+                                <input class="form-control rounded-0" type="password" name="pass" id="pass" placeholder="Password" required>
                             </div>
                             <div class="input-group mb-3 form-group">
                                 <span class="input-group-text rounded-0">
                                     <i class="fas fa-key fa-lg"></i>
                                 </span>
-                                <input class="form-control rounded-0" type="password" name="password" id="password" placeholder="Password" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input float-start" type="checkbox" name="rem" id="formCheck" <?php if(isset($_COOKIE['email'])){ ?> checked <?php } ?> >
-                                    <label for="formCheck" class="form-check-label" >Remember me</label>
-
-                                    <div class="forget float-end">
-                                        <a class="text-decoration-none" href="#" id="forget-link">Forgotten Password?</a>
-                                    </div>
-                                </div>
+                                <input class="form-control rounded-0" type="password" name="cpass" id="cpass" placeholder="Confirm Password" required>
                             </div>
                             <div class="form-group d-grid mt-4 pb-2">
-                                <input class="btn btn-primary btn-lg myBtn rounded-pill" type="submit" value="Sign In" id="login-btn">
+                                <input class="btn btn-primary btn-lg myBtn rounded-pill" type="submit" name="subResetPass" value="Reset Password" id="reset-btn">
                             </div>
                         </form>
                     </div>
-                    <!-- 2nd card -->
-                    <div class="card justify-content-center myColor p-4">
-                        <h1 class="text-center fw-bold text-light">Hello Friends!</h1>
-                        <hr class="my-3 myHr">
-                        <p class="text-center text-light fw-bolder lead">Enter your personal details and start your journey with us!</p>
-                        <div class="text-center">
-                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 w-50 rounded-pill myLinkBtn" id="login-link">Sign Up</button>
-                        </div>
-                    </div>
+                    <!-- 2nd card end -->
                 </div>
             </div>
         </div>
     </div>
-    
 </body>
 </html>
