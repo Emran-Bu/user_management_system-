@@ -23,4 +23,6 @@
     $created = $data['created_at'];
     $verified = $data['verified'];
 
+    $fname = strtok($cname, ' ');
+
 ?>

@@ -48,10 +48,10 @@
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-user-cog"></i>&nbsp;Hi! <?= $cname ?>
+                <i class="fa fa-user-cog"></i>&nbsp;Hi! <?= $fname ?>
             </a>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink" style="left: -28px !important;">
-                <li><a class="dropdown-item text-info" href="#"><i class="fa fa-user-cog"></i>&nbsp;<?= $cemail ?></a></li>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink" style="left: 0px !important;">
+                <li><a class="dropdown-item text-info" href="#"><i class="fa fa-user-cog"></i>&nbsp;<?= $cname ?></a></li>
                 <li><a class="dropdown-item text-info" href="#"><i class="fa fa-cog"></i>&nbsp;Setting</a></li>
                 <hr style="color: #fff; margin: 2px;">
                 <li><a class="dropdown-item text-danger" href="assets/php/logout.php"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a></li>
