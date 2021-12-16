@@ -17,7 +17,89 @@
                 <h3 class="text-center text-primary mt-2 fw-bold">Write your notes here & access anytime anywhere!</h3>
             </div>
         </div>
+        <div class="card mt-1 border-primary">
+            <h5 class="card-header bg-primary d-flex justify-content-between">
+                <span class="text-light lead align-self-center">All Notes</span>
+                <a class="btn btn-light" href="" data-bs-toggle="modal" data-bs-target="#addNoteModal"><i class="fas fa-plus-circle fa-lg"></i>&nbsp;Add New Note</a>
+            </h5>
+            <div class="card-body">
+                <div class="table-responsive" id="showNote">
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Note</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>1</td>
+                            <td>Web Development</td>
+                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, blanditiis.</td>
+                            <td>
+                                <a href="" title="View Details" class="text-success infoBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#editNoteModal"title="Edit Note" class="text-primary editBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-edit fa-lg"></i>&nbsp;</a>
+                                <a href="" title="Delete Note" class="text-danger deleteBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <h1><?= basename($_SERVER['PHP_SELF']); ?></h1> -->
+
+    <!-- start add new note modal -->
+    <div class="modal fade" id="addNoteModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h4 class="modal-title text-light">Add New Note</h4>
+                    <button type="button" data-bs-dismiss="modal" class="text-light btn close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post" id="add-note-form">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
+                        </div>
+                        <div class="form-group mt-2">
+                            <textarea class="form-control form-control-lg" name="note" id="note" cols="25" rows="6" placeholder="Write your note here..." required></textarea>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input class="btn btn-success btn-lg btn-block w-100" name="addNote" id="addNoteBtn" type="submit" value="Add Note">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end add new note modal -->
+    
+    <!-- start edit note modal -->
+    <div class="modal fade" id="editNoteModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title text-light">Edit Note</h4>
+                    <button type="button" data-bs-dismiss="modal" class="text-light btn close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post" id="add-note-form">
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
+                        </div>
+                        <div class="form-group mt-2">
+                            <textarea class="form-control form-control-lg" name="note" id="note" cols="25" rows="6" placeholder="Write your note here..." required></textarea>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input class="btn btn-info text-light btn-lg btn-block w-100" name="editNote" id="editNoteBtn" type="submit" value="Update Note">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Edit note modal -->
 
 <?php require_once 'footer.php' ?>
