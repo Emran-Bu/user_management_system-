@@ -39,7 +39,7 @@
                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, blanditiis.</td>
                             <td>
                                 <a href="" title="View Details" class="text-success infoBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#editNoteModal"title="Edit Note" class="text-primary editBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-edit fa-lg"></i>&nbsp;</a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#editNoteModal" class="text-primary editBtn text-decoration-none"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Note" class="fas fa-edit fa-lg"></i>&nbsp;</a>
                                 <a href="" title="Delete Note" class="text-danger deleteBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
                             </td>
                         </tbody>
