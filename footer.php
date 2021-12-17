@@ -8,6 +8,10 @@
     <!-- data tables js link -->
     <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
 
+    <!-- sweetalert2 -->
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="assets/sweetalert2@11/add_sweetalert2@11/sweetalert2.all.min.js"></script>
+
     <!-- custom script  -->
     <script type="text/javascript">
       // tooltip js
@@ -19,6 +23,33 @@
       // data tables js
       $(document).ready( function () {
         $('table').DataTable();
+
+        // add new note ajax request
+        $("#addNoteBtn").click(function(e){
+          if($("#add-note-form")[0].checkValidity()){
+            e.preventDefault();
+
+            $("#addNoteBtn").val("Please Wait...");
+
+            $.ajax({
+              url : 'assets/php/process.php',
+              method : 'post',
+              data : $("#add-note-form").serialize()+'&action=add_note',
+              success : function(response){
+                $("#addNoteBtn").val("Add Note");
+                $("#add-note-form")[0].reset();
+                $("#addNoteModal").modal('hide');
+
+                // sweetalert2
+                Swal.fire(
+                  'Note added successfully!',
+                  '',
+                  'success'
+                )
+              }
+            });
+          }
+        });
       });
     </script>
     

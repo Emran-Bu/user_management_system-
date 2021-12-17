@@ -84,7 +84,7 @@
                     <button type="button" data-bs-dismiss="modal" class="text-light btn close">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" id="add-note-form">
+                    <form action="#" method="post" id="edit-note-form">
                         <input type="hidden" name="id" id="id">
                         <div class="form-group">
                             <input type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
