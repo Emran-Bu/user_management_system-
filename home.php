@@ -24,26 +24,7 @@
             </h5>
             <div class="card-body">
                 <div class="table-responsive" id="showNote">
-                    <table class="table table-striped text-center">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Note</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <td>1</td>
-                            <td>Web Development</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, blanditiis.</td>
-                            <td>
-                                <a href="" title="View Details" class="text-success infoBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#editNoteModal" class="text-primary editBtn text-decoration-none"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Note" class="fas fa-edit fa-lg"></i>&nbsp;</a>
-                                <a href="" title="Delete Note" class="text-danger deleteBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
-                            </td>
-                        </tbody>
-                    </table>
+                        
                 </div>
             </div>
         </div>

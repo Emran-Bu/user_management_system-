@@ -22,7 +22,6 @@
 
       // data tables js
       $(document).ready( function () {
-        $('table').DataTable();
 
         // add new note ajax request
         $("#addNoteBtn").click(function(e){
@@ -46,10 +45,29 @@
                   '',
                   'success'
                 )
+                displayAllNotes();
               }
             });
           }
         });
+
+        // display all note ajax of an user
+        function displayAllNotes(){
+          $.ajax({
+            url : 'assets/php/process.php',
+            method : 'post',
+            data : { action : 'display_notes' },
+            success : function (response){
+              $("#showNote").html(response);
+              $('table').DataTable({
+                order: [0, 'desc']
+              });
+            }
+          });
+        }
+
+        displayAllNotes();
+
       });
     </script>
     
