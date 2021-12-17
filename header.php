@@ -11,6 +11,9 @@
     <!-- fontawesome css links -->
     <link rel="stylesheet" href="assets/css/font_awesome-5/font-awesome5.15.1cssall.min.css">
 
+    <!-- data tables css link -->
+    <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
+
     <title><?= ucfirst(basename($_SERVER['PHP_SELF'], '.php') ) ?> | User System</title>
 
     <style>
