@@ -63,7 +63,8 @@
             method : 'post',
             data : { edit_id : edit_id },
             success : function (response){
-              console.log(response);
+              data = JSON.parse(response);
+              console.log(data);
             }
           });
         
