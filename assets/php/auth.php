@@ -89,6 +89,18 @@
 
             return $result;
         }
+
+        // edit note of an user
+        public function edit_note($id)
+        {
+            $sql = "SELECT * FROM notes WHERE id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
     }
 
 ?>

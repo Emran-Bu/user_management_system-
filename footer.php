@@ -9,11 +9,12 @@
     <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
 
     <!-- sweetalert2 -->
-    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script src="assets/sweetalert2@11/add_sweetalert2@11/sweetalert2.all.min.js"></script>
 
     <!-- custom script  -->
+
     <script type="text/javascript">
+
       // tooltip js
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl){
@@ -51,6 +52,23 @@
           }
         });
 
+        // edit note of an user ajax request
+        $("body").on('click', '.editBtn', function(e){
+          e.preventDefault();
+          
+          edit_id = $(this).attr('id');
+
+          $.ajax({
+            url : 'assets/php/process.php',
+            method : 'post',
+            data : { edit_id : edit_id },
+            success : function (response){
+              console.log(response);
+            }
+          });
+        
+        });
+
         // display all note ajax of an user
         function displayAllNotes(){
           $.ajax({
@@ -69,6 +87,7 @@
         displayAllNotes();
 
       });
+
     </script>
     
 </body>

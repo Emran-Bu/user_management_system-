@@ -34,9 +34,11 @@
                 <td>'.$row['title'].'</td>
                 <td>'.substr($row['note'], 0, 75).'...</td>
                 <td>
-                    <a href="" title="View Details" class="text-success infoBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#editNoteModal" class="text-primary editBtn text-decoration-none"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Note" class="fas fa-edit fa-lg"></i>&nbsp;</a>
-                    <a href="" title="Delete Note" class="text-danger deleteBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
+                    <a href="#" id="'.$row['id'].'" title="View Details" class="text-success infoBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
+
+                    <a href="#" id="'.$row['id'].'" data-bs-toggle="modal" data-bs-target="#editNoteModal" class="text-primary editBtn text-decoration-none"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Note" class="fas fa-edit fa-lg"></i>&nbsp;</a>
+
+                    <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger deleteBtn text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
                 </td>
                 </tr>';
             }
@@ -46,6 +48,14 @@
         } else {
             echo "<h3 class='text-center text-secondary'>:) You have not written any note yet! write your first note now!</h3>";
         }
+    }
+
+    // handle edit note of an user ajax request
+    if (isset($_POST['edit_id'])) {
+        $id = $_POST['edit_id'];
+
+        $row = $cuser->edit_note($id);
+        echo json_encode($row);
     }
 
 ?>

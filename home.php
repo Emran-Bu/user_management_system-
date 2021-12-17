@@ -17,14 +17,14 @@
                 <h3 class="text-center text-primary mt-2 fw-bold">Write your notes here & access anytime anywhere!</h3>
             </div>
         </div>
-        <div class="card mt-1 border-primary">
+        <div class="card my-1 border-primary">
             <h5 class="card-header bg-primary d-flex justify-content-between">
                 <span class="text-light lead align-self-center">All Notes</span>
                 <a class="btn btn-light" href="" data-bs-toggle="modal" data-bs-target="#addNoteModal"><i class="fas fa-plus-circle fa-lg"></i>&nbsp;Add New Note</a>
             </h5>
             <div class="card-body">
                 <div class="table-responsive" id="showNote">
-                        
+
                 </div>
             </div>
         </div>
@@ -82,5 +82,5 @@
         </div>
     </div>
     <!-- end Edit note modal -->
-
+    
 <?php require_once 'footer.php' ?>
