@@ -101,6 +101,43 @@
           }
         });
 
+        // delete a note of an user ajax request
+        $('body').on('click', '.deleteBtn', function(e){
+          e.preventDefault();
+
+          del_id = $('this').attr('id');
+
+          Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            $.ajax({
+              url : 'assets/php/process.php',
+              method : 'post',
+              data : { del_id : del_id },
+              success : function (response){
+                console.log(response);
+                Swal.fire(
+                'Deleted!',
+                'Note deleted successfully!',
+                'success'
+                )
+                displayAllNotes();
+              }
+           });
+
+          }
+        })
+        })
+
         // display all note ajax of an user
         function displayAllNotes(){
           $.ajax({

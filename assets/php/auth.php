@@ -110,6 +110,15 @@
             $stmt->execute(['id'=>$id, 'title'=>$title, 'note'=> $note]);
             return true;
         }
+
+        // delete a note of an user
+        public function delete_note($id)
+        {
+            $sql = "DELETE FROM notes WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            return true;
+        }
     }
 
 ?>

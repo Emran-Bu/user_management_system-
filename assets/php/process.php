@@ -66,4 +66,8 @@
 
         $cuser->update_note($id, $title, $note);
     }
+
+    if (isset($_POST['del_id'])) {
+        echo ($_POST);
+    }
 ?>
