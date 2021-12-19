@@ -85,17 +85,17 @@
               data : $("#edit-note-form").serialize()+'&action=update_note',
               success : function(response){
                 console.log(response);
-                // $("#editNoteBtn").val("Update Note");
-                // $("#edit-note-form")[0].reset();
-                // $("#editNoteModal").modal('hide');
+                $("#editNoteBtn").val("Update Note");
+                $("#edit-note-form")[0].reset();
+                $("#editNoteModal").modal('hide');
 
-                // // sweetalert2
-                // Swal.fire(
-                //   'Note Updated successfully!',
-                //   '',
-                //   'success'
-                // )
-                // displayAllNotes();
+                // sweetalert2
+                Swal.fire(
+                  'Note Updated successfully!',
+                  '',
+                  'success'
+                )
+                displayAllNotes();
               }
             });
           }

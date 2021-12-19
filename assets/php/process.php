@@ -60,6 +60,10 @@
 
     // handle update note of user ajax request
     if (isset($_POST['action']) && $_POST['action']=='update_note') {
-        
+        $id = $cuser->test_input($_POST['id']);
+        $title = $cuser->test_input($_POST['title']);
+        $note = $cuser->test_input($_POST['note']);
+
+        $cuser->update_note($id, $title, $note);
     }
 ?>
