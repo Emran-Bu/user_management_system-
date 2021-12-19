@@ -58,4 +58,8 @@
         echo json_encode($row);
     }
 
+    // handle update note of user ajax request
+    if (isset($_POST['action']) && $_POST['action']=='update_note') {
+        
+    }
 ?>

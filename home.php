@@ -44,7 +44,7 @@
                             <input type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
                         </div>
                         <div class="form-group mt-2">
-                            <textarea class="form-control form-control-lg" name="note" id="note" cols="25" rows="6" placeholder="Write your note here..." required></textarea>
+                            <textarea class="form-control form-control-lg" name="note" cols="25" rows="6" placeholder="Write your note here..." required></textarea>
                         </div>
                         <div class="form-group mt-2">
                             <input class="btn btn-success btn-lg btn-block w-100" name="addNote" id="addNoteBtn" type="submit" value="Add Note">
@@ -68,7 +68,7 @@
                     <form action="#" method="post" id="edit-note-form">
                         <input type="hidden" name="id" id="id">
                         <div class="form-group">
-                            <input type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
+                            <input id="title" type="text" name="title" class="form-control form-control-lg" placeholder="Enter Title" required>
                         </div>
                         <div class="form-group mt-2">
                             <textarea class="form-control form-control-lg" name="note" id="note" cols="25" rows="6" placeholder="Write your note here..." required></textarea>

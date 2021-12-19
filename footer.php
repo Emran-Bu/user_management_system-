@@ -64,10 +64,41 @@
             data : { edit_id : edit_id },
             success : function (response){
               data = JSON.parse(response);
-              console.log(data);
+              $('#id').val(data.id);
+              $('#title').val(data.title);
+              $('#note').val(data.note);
             }
           });
         
+        });
+
+        // update note of an user ajax request
+        $("#editNoteBtn").click(function(e){
+          if($("#edit-note-form")[0].checkValidity()){
+            e.preventDefault();
+
+            $("#editNoteBtn").val("Please Wait...");
+
+            $.ajax({
+              url : 'assets/php/process.php',
+              method : 'post',
+              data : $("#edit-note-form").serialize()+'&action=update_note',
+              success : function(response){
+                console.log(response);
+                // $("#editNoteBtn").val("Update Note");
+                // $("#edit-note-form")[0].reset();
+                // $("#editNoteModal").modal('hide');
+
+                // // sweetalert2
+                // Swal.fire(
+                //   'Note Updated successfully!',
+                //   '',
+                //   'success'
+                // )
+                // displayAllNotes();
+              }
+            });
+          }
         });
 
         // display all note ajax of an user

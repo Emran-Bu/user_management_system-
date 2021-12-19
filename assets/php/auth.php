@@ -101,6 +101,15 @@
 
             return $result;
         }
+
+        // update note of an user
+        public function update_note($id, $title, $note){
+            $sql = "UPDATE notes SET title = :title, note = :note, updated_at = NOW() WHERE id = :id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id, 'title'=>$title, 'note'=> $note]);
+            return true;
+        }
     }
 
 ?>
