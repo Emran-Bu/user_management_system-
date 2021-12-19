@@ -105,7 +105,7 @@
         $('body').on('click', '.deleteBtn', function(e){
           e.preventDefault();
 
-          del_id = $('this').attr('id');
+          del_id = $(this).attr('id');
 
           Swal.fire({
           title: 'Are you sure?',
@@ -124,7 +124,7 @@
               method : 'post',
               data : { del_id : del_id },
               success : function (response){
-                console.log(response);
+                // console.log(response);
                 Swal.fire(
                 'Deleted!',
                 'Note deleted successfully!',
@@ -136,6 +136,22 @@
 
           }
         })
+        })
+
+        // display note of an user is details ajax request
+        $('body').on('click', '.infoBtn', function(e){
+          e.preventDefault();
+
+          $info_id = $(this).attr('id');
+
+          $.ajax({
+            url : 'assets/php/process.php',
+            method : 'post',
+            data : { info_id : info_id },
+            success : function (response){
+              console.log(response);
+            }
+          });
         })
 
         // display all note ajax of an user
