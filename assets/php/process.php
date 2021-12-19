@@ -67,17 +67,17 @@
         $cuser->update_note($id, $title, $note);
     }
 
-    // handle a note of an user ajax request
+    // handle delete a note of an user ajax request
     if (isset($_POST['del_id'])) {
         $id = $_POST['del_id'];
 
         $cuser->delete_note($id);
     }
 
-    // handle a note of an user ajax request
-    if (isset($_POST['del_id'])) {
-        $id = $_POST['del_id'];
-
-        $cuser->delete_note($id);
+    // handle display note of an user is details ajax request
+    if (isset($_POST['info_id'])) {
+        $id = $_POST['info_id'];
+        $row = $cuser->edit_note($id);
+        echo json_encode($row);
     }
 ?>

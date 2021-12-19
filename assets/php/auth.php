@@ -90,7 +90,7 @@
             return $result;
         }
 
-        // edit note of an user
+        // edit note of an user and display note of an user is details
         public function edit_note($id)
         {
             $sql = "SELECT * FROM notes WHERE id = $id";

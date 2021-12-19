@@ -142,14 +142,15 @@
         $('body').on('click', '.infoBtn', function(e){
           e.preventDefault();
 
-          $info_id = $(this).attr('id');
+          info_id = $(this).attr('id');
 
           $.ajax({
             url : 'assets/php/process.php',
             method : 'post',
             data : { info_id : info_id },
             success : function (response){
-              console.log(response);
+              id = JSON.parse(response);
+              console.log(id);
             }
           });
         })
