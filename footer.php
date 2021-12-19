@@ -149,8 +149,13 @@
             method : 'post',
             data : { info_id : info_id },
             success : function (response){
-              id = JSON.parse(response);
-              console.log(id);
+              data = JSON.parse(response);
+              Swal.fire({
+                title: '<strong>Note : ID('+data.id+')</strong>',
+                icon: 'info',
+                html: '<b>Title : </b>'+data.title+'<br><br><b>Note : </b>'+data.note+'<br><br><b>Written on : </b>'+data.created_at+'<br><br><b>Updated on : </b>'+data.updated_at+'<br><br>',
+                showCloseButton: true,
+              })
             }
           });
         })
