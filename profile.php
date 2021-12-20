@@ -24,6 +24,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
+                            <!-- profile tab content start -->
                             <div class="tab-pane container active" id="profile">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -56,13 +57,85 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 mt-3 mt-lg-0 align-self-center">
                                         <div class="card border-primary">
-                                            
+                                            <?php if(!$cphoto): ?>
+                                                <img src="assets/img/avatar2.jpg" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                            <?php else: ?>
+                                                <img src="<?= 'assets/php/uploads/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- profile tab content End -->
+
+                            <!-- profile tab content start -->
+                            <div class="tab-pane container fade" id="editProfile">
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="card border-danger align-self-center">
+                                            <?php if(!$cphoto): ?>
+                                                <img src="assets/img/avatar2.jpg" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                            <?php else: ?>
+                                                <img src="<?= 'assets/php/uploads/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="card border-danger align-self-center">
+                                            <form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data">
+                                                <input type="hidden" name="oldImg" value="<?= $cphoto; ?>">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-control-label" for="profilePhoto" class="m-1">Upload Profile Image : </label>
+                                                    <input class="form-control" type="file" name="image" id="profilePhoto">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label class="form-control-label" for="name" class="m-1">Name : </label>
+                                                    <input class="form-control" type="text" name="name" id="name" value="<?= $cname; ?>">
+                                                </div>
+
+                                                <div class="form-group mb-2"> 
+                                                    <div class="d-flex">
+                                                        <div class="me-3"><label class="">Gender : </label></div>
+                                                        <div class="form-check me-3">
+                                                            <input type="radio" class="form-check-input" name="gender" value="Male" <?= ($cgender == 'Male')? 'checked':'' ?>>
+                                                            <label class="form-control-label" for="gender" class="">Male</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" class="form-check-input" name="gender" value="Female" <?= ($cgender == 'Female')? 'checked':'' ?>>
+                                                            <label class="form-control-label" for="gender" class="">Female</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="dob">Date of Birth : </label>
+                                                    <input class="form-control" type="date" name="dob" id="dob" value="<?= $cdob; ?>">
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="phone">Phone : </label>
+                                                    <input class="form-control" type="tel" name="phone" id="phone" placeholder="Phone" value="<?= $cphone; ?>">
+                                                </div>
+
+                                                <div class="form-group mb-2">
+                                                    <input class="btn btn-danger w-100 btn-block" type="submit" name="profile_update" id="profileUpdateBtn" value="Update Profile">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- profile tab content end -->
+
+                            <!-- change password tab contents start -->
+                            
+                            <!-- change password tab contents end -->
                         </div>
                     </div>
                 </div>
