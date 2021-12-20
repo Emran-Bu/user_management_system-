@@ -22,7 +22,10 @@
     $cphoto = $data['photo'];
     $created = $data['created_at'];
     $verified = $data['verified'];
+
     $fname = strtok($cname, ' ');
+
+    $reg_on = date('d M Y', strtotime($created));
 
     if ($verified == 0) {
         $verified = 'Not Verified!';

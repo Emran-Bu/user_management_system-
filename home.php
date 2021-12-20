@@ -24,7 +24,7 @@
             </h5>
             <div class="card-body">
                 <div class="table-responsive" id="showNote">
-
+                    <p class="text-center lead mt-5">Please Wait...</p>
                 </div>
             </div>
         </div>
