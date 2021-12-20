@@ -122,7 +122,7 @@
 
         // update profile of an user
         public function update_profile($name, $gender, $dob, $phone, $photo, $id){
-            $sql = "UPDATE users SET name = :name, gender = :gender, dob : :dob, phone = :phone, photo = :photo WHERE id = :id AND deleted != 0";
+            $sql = "UPDATE users SET name = :name, gender = :gender, dob = :dob, phone = :phone, photo = :photo WHERE id = :id AND deleted != 0";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['name'=>$name, 'gender'=>$gender, 'dob'=>$dob, 'phone'=>$phone, 'photo'=>$photo, 'id'=>$id]);
             return true;

@@ -92,7 +92,16 @@
         $folder = 'uploads/';
 
         if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != '')) {
-            $newImage = $folder.$_FILES['image']['name'];
+            $newImage = $folder.date('Y_m_d_h_i_s_').$_FILES['image']['name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $newImage);
+
+            if ($oldImg != null) {
+                unlink($oldImg);
+            }
+        } else {
+            $newImage = $oldImg;
         }
+
+        $cuser->update_profile($name, $gender, $dob, $phone, $newImage, $cid);
     }
 ?>

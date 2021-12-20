@@ -62,7 +62,7 @@
                                             <?php if(!$cphoto): ?>
                                                 <img src="assets/img/avatar2.jpg" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
                                             <?php else: ?>
-                                                <img src="<?= 'assets/php/uploads/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                                <img src="<?= 'assets/php/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                             <?php if(!$cphoto): ?>
                                                 <img src="assets/img/avatar2.jpg" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
                                             <?php else: ?>
-                                                <img src="<?= 'assets/php/uploads/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
+                                                <img src="<?= 'assets/php/'.$cphoto; ?>" class="img-thumbnail img-fluid" alt="avatar" srcset="" style="height: 405px;">
                                             <?php endif; ?>
                                         </div>
                                     </div>
