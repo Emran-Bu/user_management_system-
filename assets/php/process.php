@@ -80,4 +80,19 @@
         $row = $cuser->edit_note($id);
         echo json_encode($row);
     }
+
+    // handle profile update ajax request
+    if (isset($_FILES['image'])) {
+        $name = $cuser->test_input($_POST['name']);
+        $gender = $cuser->test_input($_POST['gender']);
+        $dob = $cuser->test_input($_POST['dob']);
+        $phone = $cuser->test_input($_POST['phone']);
+
+        $oldImg = $_POST['oldImg'];
+        $folder = 'uploads/';
+
+        if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != '')) {
+            $newImage = $folder.$_FILES['image']['name'];
+        }
+    }
 ?>

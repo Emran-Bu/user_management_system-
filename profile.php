@@ -86,7 +86,7 @@
 
                                     <div class="col-lg-6 mt-3 mt-lg-0">
                                         <div class="card border-danger">
-                                            <form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data">
+                                            <form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data" id="profile-update-form">
                                                 <input type="hidden" name="oldImg" value="<?= $cphoto; ?>">
                                                 <div class="form-group mb-3">
                                                     <label class="form-control-label" for="profilePhoto" class="m-1">Upload Profile Image : </label>
@@ -176,4 +176,37 @@
         </div>
     </div>
     
-<?php require_once 'footer.php' ?>
+    <!-- Jquery link -->
+    <script src="assets/js/jqueryPlugin/jquery-3.5.1.min.js"></script>
+
+    <!-- bootstrap js links -->
+    <script type="text/javascript" src="assets/js/bootstrap-5/bootstrap.bundle.min.js"></script>
+
+    <!-- data tables js link -->
+    <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
+
+    <!-- sweetalert2 -->
+    <script src="assets/sweetalert2@11/add_sweetalert2@11/sweetalert2.all.min.js"></script>
+
+    <!-- custom script  -->
+    <script>
+        $(document).ready(function(){
+            // profile update ajax request
+            $("#profile-update-form").submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    url : 'assets/php/process.php',
+                    method : 'post',
+                    processData : false,
+                    contentType : false,
+                    cache : false,
+                    data : new FormData(this),
+                    success : function(response){
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
