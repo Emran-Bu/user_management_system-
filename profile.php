@@ -136,12 +136,14 @@
                             <!-- change password tab contents start -->
                             <div class="tab-pane container fade" id="changePassword">
                                 <div class="row">
+                                    <div id="changePassAlert"></div>
                                     <div class="col-lg-6">
                                         <div class="card border-success">
                                             <div class="card-header bg-success text-white text-center lead">
                                                 Change Password
                                             </div>
                                             <form action="" method="post" class="px-3 mt-3" id="change-pass-form">
+                                                
                                                 <div class="form-group mb-2">
                                                     <label for="curpass">Enter Your Current Password : </label>
                                                     <input class="form-control" type="password" name="curpass" id="curpass" placeholder="Current Password" minlength="5" required>
@@ -227,7 +229,10 @@
                             method : 'post',
                             data : $('#change-pass-form').serialize()+'&action=change_pass',
                             success : function(response){
-                                
+                                $("#changePassAlert").html(response);
+                                $('#changePassBtn').val('Change Password');
+                                $("#changePassError").text('');
+                                $("#change-pass-form")[0].reset();
                             }
                         });
                      }

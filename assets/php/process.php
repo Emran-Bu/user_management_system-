@@ -108,6 +108,21 @@
     // handle change password ajax request
 
     if (isset($_POST['action']) && $_POST['action'] == 'change_pass') {
-        
+        $currentPass = $_POST['curpass'];
+        $newPass = $_POST['newpass'];
+        $cnewPass = $_POST['cnewpass'];
+
+        $hnewPass = password_hash($newPass, PASSWORD_DEFAULT);
+
+        if ($newPass != $cnewPass) {
+            echo $cuser->showMessage('danger', 'Password Did Not Matched!');
+        } else {
+            if (password_verify($currentPass, $cpass)) {
+                $cuser->change_password($hnewPass, $cid);
+                echo $cuser->showMessage('success', 'Password Changed Successfully!');
+            } else {
+                echo $cuser->showMessage('danger', 'Current Password is Wrong!');
+            }
+        }
     }
 ?>
