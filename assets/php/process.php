@@ -2,6 +2,14 @@
 
     require_once 'session.php';
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+    
+    require 'vendor/autoload.php';
+
+    $mail = new PHPMailer(true);
+
     // handle add new note ajax request
     if (isset($_POST['action']) && $_POST['action'] == 'add_note') {
         $title = $cuser->test_input($_POST['title']);
@@ -123,6 +131,38 @@
             } else {
                 echo $cuser->showMessage('danger', 'Current Password is Wrong!');
             }
+        }
+    }
+
+    // verify E-mail ajax request
+    if (isset($_POST['action']) && $_POST['action'] == 'verify-email') {
+        try {
+            // server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            
+            $mail->Username = Database::USERNAME;
+            $mail->Password = Database::PASSWORD;
+            
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+
+            // recipients
+            $mail->setFrom(Database::USERNAME, 'User Management System');
+            $mail->addAddress($cemail);
+
+            // content
+            $mail->isHTML(true);
+            $mail->Subject = 'Verify Password';
+            $mail->Body = '<h3>Click the below link to verify your E-Mail.<br><br><a href="http://localhost/user_system/verify-email.php?email='.$cemail.'">http://localhost/user_system/verify-email.php?email='.$cemail.'</a><br><br>Regards<br>Emran Hasan</h3>';
+
+            $mail->send();
+            echo $cuser->showMessage('success', 'Verification link sent to your E-Mail. Please check your mail!');
+
+        } catch(Exception $e){
+            echo $cuser->showMessage('danger', 'Something went wrong please try again later!');
         }
     }
 ?>
