@@ -84,8 +84,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="card border-danger align-self-center">
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="card border-danger">
                                             <form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data">
                                                 <input type="hidden" name="oldImg" value="<?= $cphoto; ?>">
                                                 <div class="form-group mb-3">
@@ -134,7 +134,40 @@
                             <!-- profile tab content end -->
 
                             <!-- change password tab contents start -->
-                            
+                            <div class="tab-pane container fade" id="changePassword">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card border-success">
+                                            <div class="card-header bg-success text-white text-center lead">
+                                                Change Password
+                                            </div>
+                                            <form action="" method="post" class="px-3 mt-3">
+                                                <div class="form-group mb-2">
+                                                    <label for="curpass">Enter Your Current Password : </label>
+                                                    <input class="form-control" type="password" name="curpass" id="curpass" placeholder="Current Password" minlength="5" required>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label for="newpass">Enter New Password : </label>
+                                                    <input class="form-control" type="password" name="newpass" id="newpass" placeholder="New Password" minlength="5" required>
+                                                </div>
+                                                <div class="form-group mb-4">
+                                                    <label for="cnewpass">Confirm New Password : </label>
+                                                    <input class="form-control" type="password" name="cnewpass" id="cnewpass" placeholder="Confirm New Password" minlength="5" required>
+                                                </div>
+                                                <div class="form-group mb-2 d-grid">
+                                                    <input class="btn btn-success" value="Change Password" type="submit" name="changepass" id="changePassBtn">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mt-3 mt-lg-0 align-self-center">
+                                        <div class="card border-success">
+                                            <img class="img-thumbnail img-fluid" src="assets/img/passwords2.png" alt="" srcset="" style="height: 334px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- change password tab contents end -->
                         </div>
                     </div>
