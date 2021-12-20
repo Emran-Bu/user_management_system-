@@ -104,4 +104,10 @@
 
         $cuser->update_profile($name, $gender, $dob, $phone, $newImage, $cid);
     }
+
+    // handle change password ajax request
+
+    if (isset($_POST['action']) && $_POST['action'] == 'change_pass') {
+        
+    }
 ?>

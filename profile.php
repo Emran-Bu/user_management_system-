@@ -141,7 +141,7 @@
                                             <div class="card-header bg-success text-white text-center lead">
                                                 Change Password
                                             </div>
-                                            <form action="" method="post" class="px-3 mt-3">
+                                            <form action="" method="post" class="px-3 mt-3" id="change-pass-form">
                                                 <div class="form-group mb-2">
                                                     <label for="curpass">Enter Your Current Password : </label>
                                                     <input class="form-control" type="password" name="curpass" id="curpass" placeholder="Current Password" minlength="5" required>
@@ -153,6 +153,10 @@
                                                 <div class="form-group mb-4">
                                                     <label for="cnewpass">Confirm New Password : </label>
                                                     <input class="form-control" type="password" name="cnewpass" id="cnewpass" placeholder="Confirm New Password" minlength="5" required>
+                                                    
+                                                    <div class="text-danger">
+                                                    <i id="changePassError"></i>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group mb-2 d-grid">
                                                     <input class="btn btn-success" value="Change Password" type="submit" name="changepass" id="changePassBtn">
@@ -205,6 +209,29 @@
                         location.reload();
                     }
                 });
+            });
+
+            // change password ajax request
+            $('#changePassBtn').click(function(e){
+                if ($('#change-pass-form')[0].checkValidity()) {
+                    e.preventDefault();
+
+                    $('#changePassBtn').val('Please Wait...');
+                    
+                    if ($("#newpass").val() != $("#cnewpass").val()) {
+                        $("#changePassError").text('* Password did not matched!');
+                        $('#changePassBtn').val('Change Password');
+                     } else {
+                        $.ajax({
+                            url : 'assets/php/process.php',
+                            method : 'post',
+                            data : $('#change-pass-form').serialize()+'&action=change_pass',
+                            success : function(response){
+                                
+                            }
+                        });
+                     }
+                }
             });
         });
     </script>
