@@ -165,4 +165,12 @@
             echo $cuser->showMessage('danger', 'Something went wrong please try again later!');
         }
     }
+
+    // handle send feedback to admin ajax request
+    if (isset($_POST['action']) && $_POST['action'] == 'feedback') {
+        $subject = $cuser->test_input($_POST['subject']);
+        $feedback = $cuser->test_input($_POST['feedback']);
+
+        $cuser->send_feedback($subject, $feedback, $cid);
+    }
 ?>

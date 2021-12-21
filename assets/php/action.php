@@ -28,6 +28,31 @@
             if ($user->register($name, $email, $hpass)) {
                 echo 'register';
                 $_SESSION['user'] = $email;
+
+                // send verify mail start
+
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                
+                $mail->Username = Database::USERNAME;
+                $mail->Password = Database::PASSWORD;
+                
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = 465;
+
+                // recipients
+                $mail->setFrom(Database::USERNAME, 'User Management System');
+                $mail->addAddress($email);
+
+                // content
+                $mail->isHTML(true);
+                $mail->Subject = 'Verify Password';
+                $mail->Body = '<h3>Click the below link to verify your E-Mail.<br><br><a href="http://localhost/user_system/verify-email.php?email='.$email.'">http://localhost/user_system/verify-email.php?email='.$email.'</a><br><br>Regards<br>Emran Hasan</h3>';
+
+                $mail->send();
+
+                // send verify mail start
             } else {
                 echo $user->showMessage('warning', 'something went wrong ! try again later!');
             }
