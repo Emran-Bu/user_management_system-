@@ -96,7 +96,7 @@
                 $mail->Body = '<h3>Click the below link to reset your password.<br><br><a href="http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'">http://localhost/user_system/reset-pass.php?email='.$email.'&token='.$token.'</a><br><br>Regards<br>Emran Hasan</h3>';
 
                 $mail->send();
-                echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail inbox and spam folder!');
+                echo $user->showMessage('success', 'We have send you the reset link in your e-mail ID, please check your e-mail inbox or spam folder!');
 
             } catch(Exception $e){
                 echo $user->showMessage('danger', 'Something went wrong please try again later!');
