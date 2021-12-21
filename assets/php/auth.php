@@ -153,6 +153,26 @@
             $stmt->execute(['subject'=>$subject, 'feedback'=>$feedback, 'uid'=>$uid]);
             return true;
         }
+
+        // insert notification
+        public function notification($uid, $type, $message)
+        {
+            $sql = "INSERT INTO notification (uid, type, message) VALUES (:uid, :type, :message)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['uid'=>$uid, 'type'=>$type, 'message'=>$message]);
+            return true;
+        }
+
+        // Fetch Notification
+        public function fetchNotification($uid)
+        {
+            $sql = "SELECT * FROM notification WHERE uid = :uid AND type='user";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['uid'=>$uid]);
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
 
 ?>

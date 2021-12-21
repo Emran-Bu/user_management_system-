@@ -16,6 +16,8 @@
         $note = $cuser->test_input($_POST['note']);
 
         $cuser->add_new_note($cid, $title, $note);
+
+        $cuser->notification($cid, 'Admin', 'Note Added');
     }
 
     // handle display all notes of an user
@@ -73,6 +75,7 @@
         $note = $cuser->test_input($_POST['note']);
 
         $cuser->update_note($id, $title, $note);
+        $cuser->notification($cid, 'Admin', 'Note Updated');
     }
 
     // handle delete a note of an user ajax request
@@ -80,6 +83,8 @@
         $id = $_POST['del_id'];
 
         $cuser->delete_note($id);
+        $cuser->notification($cid, 'Admin', 'Note Deleted');
+
     }
 
     // handle display note of an user is details ajax request
@@ -111,6 +116,8 @@
         }
 
         $cuser->update_profile($name, $gender, $dob, $phone, $newImage, $cid);
+        $cuser->notification($cid, 'Admin', 'Profile Updated');
+
     }
 
     // handle change password ajax request
@@ -128,6 +135,8 @@
             if (password_verify($currentPass, $cpass)) {
                 $cuser->change_password($hnewPass, $cid);
                 echo $cuser->showMessage('success', 'Password Changed Successfully!');
+                $cuser->notification($cid, 'Admin', 'Password Changed');
+
             } else {
                 echo $cuser->showMessage('danger', 'Current Password is Wrong!');
             }
@@ -172,5 +181,20 @@
         $feedback = $cuser->test_input($_POST['feedback']);
 
         $cuser->send_feedback($subject, $feedback, $cid);
+        $cuser->notification($cid, 'Admin', 'Feedback written');
+
+    }
+    // handle fetch notification of an user
+    if(isset($_POST['action']) && $_POST['action'] == 'fetchNotification'){
+        $notification = $cuser->fetchNotification($cid);
+        $output = '';
+
+        if($notification){
+            foreach($notification as $row){
+                $output .='
+                    
+                ';
+            }
+        }
     }
 ?>
