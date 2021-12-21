@@ -192,9 +192,20 @@
         if($notification){
             foreach($notification as $row){
                 $output .='
-                    
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button id="'.$row['id'].'" class="btn-close fs-6 p-3" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    <h4 class="alert-heading">New Notification</h4>
+                    <div class="lead fs-6">'.$row['message'].'</div>
+                    <hr class="my-2">
+                    <p class="float-start mb-0" style="font-size: 14px;">Replay of feedback from admin</p>
+                    <p class="float-end mb-0 fst-italic" style="font-size: 14px;">'.$row['created_at'].'</p>
+                    <div class="clearfix"></div>
+                </div>
                 ';
             }
+            echo $output;
+        } else {
+            echo '<h3 class="text-center text-secondary mt-5">No any new notification</h3>';
         }
     }
 ?>

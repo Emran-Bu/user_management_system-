@@ -8,15 +8,7 @@
     <div class="container">
         <div class="row justify-content-center my-2">
             <div class="col-lg-6 mt-4" id="showAllNotification">
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <button class="btn-close fs-6 p-3" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    <h4 class="alert-heading">New Notification</h4>
-                    <div class="lead fs-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, repudiandae!</div>
-                    <hr class="my-2">
-                    <p class="float-start mb-0" style="font-size: 14px;">Replay of feedback from admin</p>
-                    <p class="float-end mb-0 fst-italic" style="font-size: 14px;">1 Minute ago</p>
-                    <div class="clearfix"></div>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -166,7 +166,7 @@
         // Fetch Notification
         public function fetchNotification($uid)
         {
-            $sql = "SELECT * FROM notification WHERE uid = :uid AND type='user";
+            $sql = "SELECT * FROM notification WHERE uid = :uid AND type = 'user";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['uid'=>$uid]);
 
