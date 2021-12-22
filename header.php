@@ -47,7 +47,7 @@
             <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'feedback.php' ? 'active': '' ?>" href="feedback.php"><i class="fas fa-comment-dots"></i>&nbsp;Feedback</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'notification.php' ? 'active': '' ?>" href="notification.php"><i class="fas fa-bell"></i>&nbsp;Notification<span id="checkNotification"></span></a>
+            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'notification.php' ? 'active': '' ?>" href="notification.php"><i class="fas fa-bell"></i>&nbsp;Notification<span id="checkNotification" class="d-inline-block"></span></a>
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

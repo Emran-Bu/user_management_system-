@@ -49,7 +49,7 @@
                     method : 'post',
                     data : { action : 'checkNotification' },
                     success : function(response){
-                        $("#checkNotification").html(response);
+                        // $("#checkNotification").html(response);
                     }
                 });
             }

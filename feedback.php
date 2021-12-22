@@ -71,6 +71,19 @@
                     });
                 }
             });
+
+            // check notification
+            checkNotification();
+            function checkNotification(){
+                $.ajax({
+                    url : 'assets/php/process.php',
+                    method : 'post',
+                    data : { action : 'checkNotification' },
+                    success : function(response){
+                        $("#checkNotification").html(response);
+                    }
+                });
+            }
         });
     </script>
 </body>

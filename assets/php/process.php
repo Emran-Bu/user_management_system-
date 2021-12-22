@@ -213,10 +213,13 @@
     if(isset($_POST['action']) && $_POST['action'] == 'checkNotification'){
        $countNotification =  $cuser->fetchNotification($cid);
        if ($countNotification) {
-           echo '<i class="fas fa-circle text-danger align-top" style="font-size: 10px;"></i>';
+        //    echo '<i class="fas fa-circle text-danger align-top" style="font-size: 10px;">'.count($countNotification).'</i>';
+        // echo count($countNotification);
+        echo '
+            <p class="bg-danger d-inline-block rounded-circle fw-bold" style="height: 20px; width: 20px; font-size: 10px; vertical-align: top;  margin-top: -10px"><span class="text-center d-flex justify-content-center" style="margin-top: 2px;">'.count($countNotification).'</span></p>
+            ';
        } else {
            echo '';
        }
-    //   echo count($countNotification);
     }
 ?>
