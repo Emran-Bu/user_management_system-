@@ -66,7 +66,6 @@
                     success : function(response){
                         fetchNotification();
                         checkNotification();
-                        // console.log(response);
                     }
                 });
             });
