@@ -208,4 +208,15 @@
             echo '<h3 class="text-center text-secondary mt-5">No any new notification</h3>';
         }
     }
+
+    // handle check notification
+    if(isset($_POST['action']) && $_POST['action'] == 'checkNotification'){
+       $countNotification =  $cuser->fetchNotification($cid);
+       if ($countNotification) {
+           echo '<i class="fas fa-circle text-danger align-top" style="font-size: 10px;"></i>';
+       } else {
+           echo '';
+       }
+    //   echo count($countNotification);
+    }
 ?>

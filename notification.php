@@ -36,7 +36,20 @@
                     method : 'post',
                     data : { action : 'fetchNotification' },
                     success : function(response){
-                        console.log(response);
+                        $("#showAllNotification").html(response);
+                    }
+                });
+            }
+
+            // check notification
+            checkNotification();
+            function checkNotification(){
+                $.ajax({
+                    url : 'assets/php/process.php',
+                    method : 'post',
+                    data : { action : 'checkNotification' },
+                    success : function(response){
+                        $("#checkNotification").html(response);
                     }
                 });
             }
