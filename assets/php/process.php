@@ -198,7 +198,7 @@
                     <div class="lead fs-6">'.$row['message'].'</div>
                     <hr class="my-2">
                     <p class="float-start mb-0" style="font-size: 14px;">Replay of feedback from admin</p>
-                    <p class="float-end mb-0 fst-italic" style="font-size: 14px;">'.$row['created_at'].'</p>
+                    <p class="float-end mb-0 fst-italic" style="font-size: 14px;">'.$cuser->timeInAgo($row['created_at']).'</p>
                     <div class="clearfix"></div>
                 </div>
                 ';
