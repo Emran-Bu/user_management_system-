@@ -193,7 +193,7 @@
             foreach($notification as $row){
                 $output .='
                 <div class="alert alert-danger alert-dismissible" role="alert">
-                    <button id="'.$row['id'].'" class="btn-close fs-6 p-3" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    <button id="'.$row['id'].'" class="btn-close p-3" style="font-size: 11px;" type="button" aria-label="close"></button>
                     <h4 class="alert-heading">New Notification</h4>
                     <div class="lead fs-6">'.$row['message'].'</div>
                     <hr class="my-2">
@@ -205,7 +205,7 @@
             }
             echo $output;
         } else {
-            echo '<h3 class="text-center text-secondary mt-5">No any new notification</h3>';
+            echo '<h3 class="text-center text-secondary mt-5">No any new notification!</h3>';
         }
     }
 
@@ -213,13 +213,18 @@
     if(isset($_POST['action']) && $_POST['action'] == 'checkNotification'){
        $countNotification =  $cuser->fetchNotification($cid);
        if ($countNotification) {
-        //    echo '<i class="fas fa-circle text-danger align-top" style="font-size: 10px;">'.count($countNotification).'</i>';
-        // echo count($countNotification);
+        //  echo '<i class="fas fa-circle text-danger align-top" style="font-size: 10px;">'.count($countNotification).'</i>';
         echo '
             <p class="bg-danger d-inline-block rounded-circle fw-bold" style="height: 20px; width: 20px; font-size: 10px; vertical-align: top;  margin-top: -10px"><span class="text-center d-flex justify-content-center" style="margin-top: 2px;">'.count($countNotification).'</span></p>
             ';
        } else {
            echo '';
        }
+    }
+
+    // handle remove notification
+    if (isset($_POST['notification_id'])) {
+        $id = $_POST['notification_id'];
+        $cuser->removeNotification($id);
     }
 ?>

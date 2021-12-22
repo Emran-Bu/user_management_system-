@@ -173,6 +173,15 @@
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        // remove Notification
+        public function removeNotification($id)
+        {
+            $sql = "DELETE FROM notification WHERE id = :id AND type = 'user'";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            return true;
+        }
     }
 
 ?>

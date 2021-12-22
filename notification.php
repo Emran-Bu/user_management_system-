@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Jquery link -->
     <script src="assets/js/jqueryPlugin/jquery-3.5.1.min.js"></script>
 
@@ -49,10 +49,28 @@
                     method : 'post',
                     data : { action : 'checkNotification' },
                     success : function(response){
-                        // $("#checkNotification").html(response);
+                        $("#checkNotification").html(response);
                     }
                 });
             }
+
+            // remove notification
+            $("body").on('click', '.btn-close', function(e){
+                e.preventDefault();
+                notification_id = $(this).attr('id');
+
+                $.ajax({
+                    url : 'assets/php/process.php',
+                    method : 'post',
+                    data : { notification_id : notification_id },
+                    success : function(response){
+                        fetchNotification();
+                        checkNotification();
+                        // console.log(response);
+                    }
+                });
+            });
+
         });
     </script>
 </body>
