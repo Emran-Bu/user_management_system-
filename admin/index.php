@@ -44,6 +44,28 @@
 
     <!-- bootstrap js links -->
     <script type="text/javascript" src="../assets/js/bootstrap-5/bootstrap.bundle.min.js"></script>
+
+    <!-- custom script -->
+    <script>
+        $(document).ready(function(){
+            // admin login
+            $("#adminLoginBtn").click(function(e){
+                if($("#admin-login-form")[0].checkValidity()){
+                    e.preventDefault();
+                    $(this).val('Please Wait...');
+
+                    $.ajax({
+                        url : 'assets/php/admin-action.php',
+                        method : 'post',
+                        data : $("#admin-login-form").serialize()+'&action=adminLogin',
+                        success : function(response){
+                            console.log(response);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
     
 </body>
 </html>
