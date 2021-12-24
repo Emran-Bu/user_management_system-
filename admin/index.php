@@ -1,3 +1,12 @@
+<?php
+
+    session_start();
+    if (isset($_SESSION['username'])) {
+        header('location:admin-dashboard.php');
+        exit();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +32,7 @@
                     </div>
                     <div class="card-body">
                         <form class="px-3" action="" method="post" id="admin-login-form">
+                            <div id="adminLoginAlert"></div>
                             <div class="form-group">
                                 <input class="form-control form-control-lg" type="text" name="username" id="username" placeholder="Username" required autofocus>
                             </div>
@@ -59,7 +69,12 @@
                         method : 'post',
                         data : $("#admin-login-form").serialize()+'&action=adminLogin',
                         success : function(response){
-                            console.log(response);
+                            if (response === 'admin_login') {
+                                location.href = 'admin-dashboard.php';
+                            } else {
+                                $('#adminLoginAlert').html(response);
+                            }
+                            $("#adminLoginBtn").val('Login');
                         }
                     });
                 }

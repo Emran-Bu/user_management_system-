@@ -12,3 +12,25 @@
 html,body{
     height: 100% !important;
 }
+
+.admin-nav{
+    width: 220px;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #343a40;
+    transition: 0.3s all ease-in-out;
+}
+
+.admin-link{
+    background-color: #343a40;
+}
+
+.admin-link:hover, .nav-active{
+    background-color: #212529;
+    text-decoration: none;
+}
+
+.animate{
+    width: 0;
+    transition: 0.3s all ease-in-out;
+}
