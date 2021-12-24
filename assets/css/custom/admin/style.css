@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+html,body{
+    height: 100% !important;
+}
