@@ -12,6 +12,17 @@
 
             return $row;
         }
+
+        // count total number of rows
+        public function totalCount($tablename)
+        {
+            $sql = "SELECT * FROM $tablename";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $count = $stmt->rowCount();
+
+            return $count;
+        }
     }
 
 ?>
