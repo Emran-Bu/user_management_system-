@@ -27,7 +27,7 @@
         <div class="card bg-warning">
             <div class="card-header">Unverified Users</div>
             <div class="card-body">
-                <h2 class="display-2">14</h2>
+                <h2 class="display-2"><?= $count->verified_users(0) ?></h2>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <div class="card bg-secondary">
             <div class="card-header">Total Notes</div>
             <div class="card-body">
-                <h2 class="display-2">20</h2>
+                <h2 class="display-2"><?= $count->totalCount('notes') ?></h2>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
         <div class="card bg-info">
             <div class="card-header">Total Feedback</div>
             <div class="card-body">
-                <h2 class="display-2">35</h2>
+                <h2 class="display-2"><?= $count->totalCount('feedback') ?></h2>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="card bg-dark">
             <div class="card-header">Total Notifications</div>
             <div class="card-body">
-                <h2 class="display-2">2002</h2>
+                <h2 class="display-2"><?= $count->totalCount('notification') ?></h2>
             </div>
         </div>
     </div>
