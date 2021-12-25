@@ -19,7 +19,7 @@
         <div class="card bg-success">
             <div class="card-header">Verified Users</div>
             <div class="card-body">
-                <h2 class="display-2">08</h2>
+                <h2 class="display-2"><?= $count->verified_users(1) ?></h2>
             </div>
         </div>
     </div>
