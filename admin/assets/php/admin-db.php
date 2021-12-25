@@ -23,6 +23,17 @@
 
             return $count;
         }
+
+        // count total verified and unverified users
+        public function verified_users($status)
+        {
+            $sql = "SELECT * FROM users WHERE verified = :status";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['status'=>$status]);
+            $count = $stmt->rowCount();
+
+            return $count;
+        }
     }
 
 ?>

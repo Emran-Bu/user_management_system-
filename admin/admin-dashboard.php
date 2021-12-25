@@ -1,4 +1,9 @@
-<?php require_once 'assets/php/admin-header.php'; ?>
+<?php
+ require_once 'assets/php/admin-header.php'; 
+ require_once 'assets/php/admin-db.php';
+ 
+ $count = new Admin();
+?>
 
 <!-- 1st views dashboard card start -->
 <div class="row mt-3">
@@ -6,7 +11,7 @@
         <div class="card bg-primary">
             <div class="card-header">Total Users</div>
             <div class="card-body">
-                <h2 class="display-2">12</h2>
+                <h2 class="display-2"><?= $count->totalCount('users') ?></h2>
             </div>
         </div>
     </div>
