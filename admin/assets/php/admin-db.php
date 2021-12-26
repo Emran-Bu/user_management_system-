@@ -34,6 +34,28 @@
 
             return $count;
         }
+
+        // gender percentage
+        public function genderPer()
+        {
+            $sql = "SELECT gender, COUNT(*) AS number FROM users WHERE gender != '' GROUP BY gender";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
+
+        // gender percentage
+        public function verifiedPer()
+        {
+            $sql = "SELECT verified, COUNT(*) AS number FROM users GROUP BY verified";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
     }
 
 ?>
