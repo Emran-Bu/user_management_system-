@@ -76,13 +76,13 @@
     <div class="col-lg-6">
         <div class="card border-success my-3">
             <div class="card-header bg-success text-center text-white lead">Male/Female User's Percentage</div>
-            <div id="chatOne" style="width: 99%; height: 400px;"></div>
+            <div id="chartGender" style="width: 99%; height: 400px;"></div>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="card border-info my-3">
             <div class="card-header bg-info text-center text-white lead">Verified/Unverified User's Percentage</div>
-            <div id="chatOne" style="width: 99%; height: 400px;"></div>
+            <div id="chartVerified" style="width: 99%; height: 400px;"></div>
         </div>
     </div>
 </div>
@@ -95,6 +95,74 @@
         </div>
         <!-- container div end -->
     </div>
+
+    
+    <!--Load the google chart-->
+    <script src="assets/google_chart/google_chart.loader.js"></script>
+    <!-- custom script -->
+    <script type="text/javascript">
+    // gender chart
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.arrayToDataTable([
+            ['Gender', 'Number'],
+            <?php
+            
+                $gender = $count->genderPer();
+                foreach ($gender as $row) {
+                    echo '["'.$row['gender'].'", '.$row['number'].'],';
+                }
+
+            ?>
+        ]);
+        
+        var options = {
+            is3D: false,
+            title: 'Gender Percentage'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartGender'));
+        chart.draw(data, options);
+      }
+
+    // verified chart
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(colChart);
+
+      function colChart() {
+
+        var data = new google.visualization.arrayToDataTable([
+            ['Verified', 'Number'],
+            <?php
+            
+                $verified = $count->verifiedPer();
+                foreach ($verified as $row) {
+                    if ($row['verified'] == 0) {
+                        $row['verified'] = 'Unverified';
+                    } else {
+                        $row['verified'] = 'Verified';
+                    }
+                    
+                    echo '["'.$row['verified'].'", '.$row['number'].'],';
+                }
+
+            ?>
+        ]);
+        
+        var options = {
+            is3D: false,
+            title: 'Verified Percentage'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartVerified'));
+        chart.draw(data, options);
+      }
+    </script>
     
 </body>
 </html>

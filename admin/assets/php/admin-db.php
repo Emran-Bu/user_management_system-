@@ -41,7 +41,7 @@
             $sql = "SELECT gender, COUNT(*) AS number FROM users WHERE gender != '' GROUP BY gender";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $result;
         }
@@ -52,7 +52,7 @@
             $sql = "SELECT verified, COUNT(*) AS number FROM users GROUP BY verified";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $result;
         }
