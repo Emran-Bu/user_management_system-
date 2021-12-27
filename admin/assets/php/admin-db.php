@@ -56,6 +56,17 @@
 
             return $result;
         }
+
+        // Count Website Hits
+        public function site_hits()
+        {
+            $sql = "SELECT hits FROM visitors";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
     }
 
 ?>

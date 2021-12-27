@@ -35,7 +35,7 @@
         <div class="card bg-danger">
             <div class="card-header">Website Hits</div>
             <div class="card-body">
-                <h2 class="display-2">120</h2>
+                <h2 class="display-2"><?php $data = $count->site_hits(); echo $data['hits']; ?></h2>
             </div>
         </div>
     </div>
