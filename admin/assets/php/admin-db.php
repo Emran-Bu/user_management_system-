@@ -99,7 +99,30 @@
             $stmt->execute(['id'=>$id]);
             
             return true;
-        }        
+        }
+        
+        // fetch all notes with user info
+        public function fetchAllNotes()
+        {
+            $sql = "SELECT notes.id, notes.title, notes.note, notes.created_at, notes.updated_at, users.name, users.email FROM notes INNER JOIN users ON notes.uid = users.id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
+        // fetch notes details with user details info by id
+        public function fetchAllNotesUsersInfoByID($id)
+        {
+            $sql = "SELECT notes.id, notes.title, notes.note, notes.created_at, notes.updated_at, users.name, users.email FROM notes INNER JOIN users ON notes.uid = users.id WHERE notes.id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
     }
 
 ?>

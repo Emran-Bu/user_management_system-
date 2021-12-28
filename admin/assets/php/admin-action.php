@@ -166,4 +166,60 @@
         $data = $admin->userAction($id, 1);
     }
 
+    // handle fetch all note ajax request
+    if (isset($_POST['action']) && $_POST['action'] == 'fetchAllNotes') {
+        $output = '';
+        $note = $admin->fetchAllNotes();
+        $sl = 1;
+        if ($note) {
+            $output .= '
+                <table class="table table-striped table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Name</th>
+                            <th>User E-Mail</th>
+                            <th>Note Title</th>
+                            <th>Note</th>
+                            <th>Written On</th>
+                            <th>Updated ON</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                foreach ($note as $row){
+                    
+                    $output .= '
+                                <tr>
+                                    <td>'.$sl++.'</td>
+                                    <td>'.$row['name'].'</td>
+                                    <td>'.$row['email'].'</td>
+                                    <td>'.$row['title'].'</td>
+                                    <td>'.$row['note'].'</td>
+                                    <td>'.$row['created_at'].'</td>
+                                    <td>'.$row['updated_at'].'</td>
+                                    <td>
+                                        <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userNotesDetailsIcon"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
+
+                                        <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger text-decoration-none infoNoteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
+                                    </td>
+                                </tr>
+                            ';
+                }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h3 class="text-center text-secondary">:) No any Notes written yet!</h3>';
+        }
+    }
+
+    // handle display note of an user is details ajax request
+    if (isset($_POST['notes_id'])) {
+        $id = $_POST['notes_id'];
+
+        $data = $admin->fetchAllNotesUsersInfoByID($id);
+
+        echo json_encode($data);
+    }
+
 ?>
