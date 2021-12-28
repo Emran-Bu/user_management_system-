@@ -91,18 +91,16 @@
                         data = JSON.parse(response);
 
                         $('#getName').text(data.name + ' ' + '(ID : ' + data.id + ')');
+                        
                         $('#getEmail').html('<p3 class="text-light fw-bold fs-6">Email : </p3> ' + data.email);
-                        // $('#getPhone').text('Phone : ' + data.phone);
-                        // $('#getDOB').text('DOB : ' + data.dob);
-                        // $('#getGender').text('Gender : ' + data.gender);
-                        // $('#getCreated').text('Created : ' + data.created_at);
-                        // $('#getVerified').text('Verified : ' + data.verified);
-
                         $('#getPhone').html('<p3 class="text-light fw-bold fs-6">Phone :</p3> ' + data.phone);
+
                         $('#getDOB').html('<p3 class="text-light fw-bold fs-6">DOB :</p3> : ' + data.dob);
+
                         $('#getGender').html('<p3 class="text-light fw-bold fs-6">Gender :</p3> ' + data.gender);
+
                         $('#getCreated').html('<p3 class="text-light fw-bold fs-6">Joined On :</p3> ' + data.created_at);
-                        // $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> ' + data.verified);
+
                         if (data.verified == '1') {
                             $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> Verified!');
                         } else {
@@ -144,7 +142,7 @@
                     // console.log(response);
                     Swal.fire(
                     'Deleted!',
-                    'Note deleted successfully!',
+                    'User deleted successfully!',
                     'success'
                     )
                     fetchAllUsers();

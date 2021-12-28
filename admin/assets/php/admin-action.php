@@ -52,6 +52,13 @@
                     } else {
                         $uphoto = '../assets/img/avatar2.jpg';
                     }
+
+                    if ($row['verified'] == 1) {
+                        $verifyIcon = '<i class="fas fa-user-check fa-lg text-success"></i>';
+                    } else {
+                        $verifyIcon = '<i class="fas fa-user-times fa-lg text-danger"></i>';
+                    }
+                    
                     $output .= '
                                 <tr>
                                     <td>'.$row['id'].'</td>
@@ -61,7 +68,7 @@
                                     <td>'.$row['phone'].'</td>
                                     <td>'.$row['gender'].'</td>
                                     <td>'.$row['dob'].'</td>
-                                    <td>'.$row['verified'].'</td>
+                                    <td>'.$verifyIcon.'</td>
                                     <td>
                                         <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userDetailsIcon" data-bs-toggle="modal"data-bs-target="#showUserDetailsModal"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
 
