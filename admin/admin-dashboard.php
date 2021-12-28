@@ -98,6 +98,7 @@
 
     
     <!--Load the google chart-->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
     <script src="assets/google_chart/google_chart.loader.js"></script>
     <!-- custom script -->
     <script type="text/javascript">
