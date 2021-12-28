@@ -62,6 +62,42 @@
             });
             });
 
+            // delete an note ajax request
+            $('body').on('click', '.deleteNoteIcon', function(e){
+            e.preventDefault();
+
+            note_del_id = $(this).attr('id');
+
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                url : 'assets/php/admin-action.php',
+                method : 'post',
+                data : { note_del_id : note_del_id },
+                success : function (response){
+                    Swal.fire(
+                    'Deleted!',
+                    'Note deleted successfully!',
+                    'success'
+                    )
+                    fetchAllNotes();
+                }
+            });
+
+            }
+            });
+            });
+
         });
     </script>
 </body>

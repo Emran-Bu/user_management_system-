@@ -201,7 +201,7 @@
                                     <td>
                                         <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userNotesDetailsIcon"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
 
-                                        <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger text-decoration-none infoNoteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
+                                        <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger text-decoration-none deleteNoteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
                                     </td>
                                 </tr>
                             ';
@@ -220,6 +220,13 @@
         $data = $admin->fetchAllNotesUsersInfoByID($id);
 
         echo json_encode($data);
+    }
+
+    // handle delete an note ajax request
+    if (isset($_POST['note_del_id'])) {
+        $id = $_POST['note_del_id'];
+
+        $data = $admin->deleteNoteOfUserByAdmin($id);
     }
 
 ?>

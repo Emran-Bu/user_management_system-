@@ -123,6 +123,16 @@
             return $result;
         }
 
+        // delete a note of an user by admin
+        public function deleteNoteOfUserByAdmin($id)
+        {
+            $sql = "DELETE FROM notes WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            
+            return true;
+        }
+
     }
 
 ?>
