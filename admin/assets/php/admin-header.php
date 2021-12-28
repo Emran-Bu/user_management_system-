@@ -24,6 +24,10 @@
     <script src="../assets/js/jqueryPlugin/jquery-3.5.1.min.js"></script>
     <!-- bootstrap js links -->
     <script type="text/javascript" src="../assets/js/bootstrap-5/bootstrap.bundle.min.js"></script>
+    <!-- data tables js link -->
+    <script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
+    <!-- sweetalert2 -->
+    <script src="../assets/sweetalert2@11/add_sweetalert2@11/sweetalert2.all.min.js"></script>
     <!-- custom script -->
     <script>
         $(document).ready(function(){

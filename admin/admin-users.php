@@ -22,5 +22,22 @@
         <!-- container div end -->
     </div>
     
+    <!-- custom script -->
+    <script>
+        $(document).ready(function(){
+            // fetch all user ajax request
+            fetchAllUsers();
+            function fetchAllUsers(){
+                $.ajax({
+                    url : 'assets/php/admin-action.php',
+                    method : 'post',
+                    data : { action: 'fetchAllUsers' },
+                    success : function(response){
+                        $("#showAllUsers").html(response);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
