@@ -90,7 +90,8 @@
             return $result;
         }  
 
-        // delete an user details by id
+        // delete an user details by id and
+        // restore an user details by id
         public function userAction($id , $val)
         {
             $sql = "UPDATE users SET deleted = $val WHERE id = :id";
