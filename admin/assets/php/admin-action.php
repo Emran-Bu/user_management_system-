@@ -229,4 +229,49 @@
         $data = $admin->deleteNoteOfUserByAdmin($id);
     }
 
+    // handle fetch all feedback ajax request
+    if (isset($_POST['action']) && $_POST['action'] == 'fetchAllFeedback') {
+        $output = '';
+        $feedback = $admin->fetchAllFeedback();
+        $sl = 1;
+        if ($feedback) {
+            $output .= '
+                <table class="table table-striped table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>FID</th>
+                            <th>UID</th>
+                            <th>User Name</th>
+                            <th>User E-Mail</th>
+                            <th>Subject</th>
+                            <th>Feedback</th>
+                            <th>Sent On</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                foreach ($feedback as $row){
+                    
+                    $output .= '
+                                <tr>
+                                    <td>'.$sl++.'</td>
+                                    <td>'.$row['uid'].'</td>
+                                    <td>'.$row['name'].'</td>
+                                    <td>'.$row['email'].'</td>
+                                    <td>'.$row['subject'].'</td>
+                                    <td>'.$row['feedback'].'</td>
+                                    <td>'.$row['created_at'].'</td>
+                                    <td>
+                                        <a href="#" id="'.$row['uid'].'" fid="'.$row['id'].'" title="Reply" class="text-primary text-decoration-none replyNoteIcon"><i class="fas fa-reply fa-lg"></i></a>
+                                    </td>
+                                </tr>
+                            ';
+                }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h3 class="text-center text-secondary">:) No any feedback written yet!</h3>';
+        }
+    }
+
 ?>

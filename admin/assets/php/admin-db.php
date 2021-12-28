@@ -133,6 +133,17 @@
             return true;
         }
 
+        // fetch all feedback with user info
+        public function fetchAllFeedback()
+        {
+            $sql = "SELECT f.id, f.subject, f.feedback, f.created_at, f.uid, u.name, u.email FROM feedback f INNER JOIN users u ON f.uid = u.id WHERE replied != 1 ORDER BY f.id DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
     }
 
 ?>
