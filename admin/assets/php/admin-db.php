@@ -88,6 +88,16 @@
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             
             return $result;
+        }  
+
+        // delete an user details by id
+        public function userAction($id , $val)
+        {
+            $sql = "UPDATE users SET deleted = $val WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            
+            return true;
         }        
     }
 

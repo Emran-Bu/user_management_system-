@@ -102,7 +102,12 @@
                         $('#getDOB').html('<p3 class="text-light fw-bold fs-6">DOB :</p3> : ' + data.dob);
                         $('#getGender').html('<p3 class="text-light fw-bold fs-6">Gender :</p3> ' + data.gender);
                         $('#getCreated').html('<p3 class="text-light fw-bold fs-6">Joined On :</p3> ' + data.created_at);
-                        $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> ' + data.verified);
+                        // $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> ' + data.verified);
+                        if (data.verified == '1') {
+                            $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> Verified!');
+                        } else {
+                            $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> Not Verified!');
+                        }
 
                         if (data.photo != '') {
                             $('#getImage').html('<img src="../assets/php/'+ data.photo +'" class="img-thumbnail img-fluid align-self-center" style="width : 100%; height : 274px">');
@@ -112,6 +117,43 @@
                     }
                 });
             });
+
+            // delete an user ajax request
+            $('body').on('click', '.userDeleteIcon', function(e){
+            e.preventDefault();
+
+            del_id = $(this).attr('id');
+
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                url : 'assets/php/admin-action.php',
+                method : 'post',
+                data : { del_id : del_id },
+                success : function (response){
+                    // console.log(response);
+                    Swal.fire(
+                    'Deleted!',
+                    'Note deleted successfully!',
+                    'success'
+                    )
+                    fetchAllUsers();
+                }
+            });
+
+            }
+            })
+            })
             
         });
     </script>

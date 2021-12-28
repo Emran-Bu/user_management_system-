@@ -86,4 +86,11 @@
         echo json_encode($data);
     }
 
+    // handle delete an user details ajax request
+    if (isset($_POST['del_id'])) {
+        $id = $_POST['del_id'];
+
+        $data = $admin->userAction($id, 0);
+    }
+
 ?>
