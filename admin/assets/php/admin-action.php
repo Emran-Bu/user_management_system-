@@ -262,7 +262,7 @@
                                     <td>'.$row['feedback'].'</td>
                                     <td>'.$row['created_at'].'</td>
                                     <td>
-                                        <a href="#" id="'.$row['uid'].'" fid="'.$row['id'].'" title="Reply" class="text-primary text-decoration-none replyNoteIcon"><i class="fas fa-reply fa-lg"></i></a>
+                                        <a href="#" id="'.$row['uid'].'" fid="'.$row['id'].'" title="Reply" class="text-primary text-decoration-none replyNoteIcon" data-bs-toggle="modal" data-bs-target="#showReplyModal"><i class="fas fa-reply fa-lg"></i></a>
                                     </td>
                                 </tr>
                             ';
@@ -272,6 +272,16 @@
         } else {
             echo '<h3 class="text-center text-secondary">:) No any feedback written yet!</h3>';
         }
+    }
+
+    // handle send feedback replay to the user ajax request
+    if (isset($_POST['message'])) {
+        $uid = $_POST['uid'];
+        $message = $admin->test_input($_POST['message']);
+        $fid = $_POST['fid'];
+
+        $admin->replyFeedback($uid, $message);
+        $admin->feedbackReplied($fid);
     }
 
 ?>

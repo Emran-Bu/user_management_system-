@@ -136,12 +136,33 @@
         // fetch all feedback with user info
         public function fetchAllFeedback()
         {
-            $sql = "SELECT f.id, f.subject, f.feedback, f.created_at, f.uid, u.name, u.email FROM feedback f INNER JOIN users u ON f.uid = u.id WHERE replied != 1 ORDER BY f.id DESC";
+            $sql = "SELECT f.id, f.subject, f.feedback, f.created_at, f.uid, u.name, u.email FROM feedback f INNER JOIN users u ON f.uid = u.id WHERE replied != 1";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             return $result;
+        }
+
+        // reply to user
+        public function replyFeedback($uid, $message)
+        {
+            $sql = "INSERT INTO notification (uid, type, message) VALUES (:uid, 'user', :message)";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['uid'=>$uid, 'message'=>$message]);
+            
+            return true;
+        }
+
+        // set feedback replied
+        public function feedbackReplied($fid)
+        {
+            $sql = "UPDATE feedback SET replied = 1 WHERE id = :fid";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['fid'=>$fid]);
+            
+            return true;
         }
 
     }

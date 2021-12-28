@@ -14,6 +14,30 @@
         </div>
     </div>
 </div>
+
+<!-- reply feedback modal -->
+<div class="modal fade" id="showReplyModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title text-light">Reply This Feedback</h4>
+                <button type="button" data-bs-dismiss="modal" class="text-light btn close modCloseBtnColor">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="post" id="reply-feedback-form">
+                    <div class="form-group">
+                        <textarea class="form-control form-control-lg" name="message" id="message" cols="25" rows="6" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input class="btn btn-info text-light btn-lg btn-block w-100" name="replyFeedback" id="feedbackReplyBtn" type="submit" value="Send Reply">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Edit note modal -->
+
 <!-- footer part -->
                 <!-- 2nd col -->
             </div>
@@ -39,6 +63,44 @@
                     }
                 });
             }
+
+            // get the current row user id and feedback id
+            var uid;
+            var fid;
+            $("body").on('click', '.replyNoteIcon', function(e){
+                uid = $(this).attr("id");
+                fid = $(this).attr("fid");
+            });
+
+            // send feedback replay to the user ajax request
+            $("#feedbackReplyBtn").click(function(e){
+                if ($('#reply-feedback-form')[0].checkValidity()) {
+                    let message = $('#message').val();
+                    e.preventDefault();
+                    $("#feedbackReplyBtn").val('Please Wait...');
+
+                    $.ajax({
+                        url : 'assets/php/admin-action.php',
+                        method : 'post',
+                        data : { uid : uid, message : message, fid : fid },
+                        success : function (response){
+                            $("#feedbackReplyBtn").val('Send Reply');
+                            $("#showReplyModal").modal('hide');
+                            $('#reply-feedback-form')[0].reset();
+
+                            // sweetalert2
+                            Swal.fire(
+                            'Feedback Send successfully!',
+                            '',
+                            'success'
+                            )
+                            
+                            fetchAllFeedback();
+                        }
+                    });
+                }
+            });
+
         });
     </script>
 </body>
