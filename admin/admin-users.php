@@ -26,14 +26,14 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card border-primary">
+                        <div class="card border-primary bg-dark text-white">
                             <div class="card-body">
-                                <p id="getEmail"></p>
-                                <p id="getPhone"></p>
-                                <p id="getDOB"></p>
-                                <p id="getGender"></p>
-                                <p id="getCreated"></p>
-                                <p id="getVerified"></p>
+                                <p class="text-primary" id="getEmail"></p>
+                                <p class="text-primary" id="getPhone"></p>
+                                <p class="text-primary" id="getDOB"></p>
+                                <p class="text-primary" id="getGender"></p>
+                                <p class="text-primary" id="getCreated"></p>
+                                <p class="text-primary" id="getVerified"></p>
                             </div>
                         </div>
                     </div>
@@ -76,6 +76,43 @@
                     }
                 });
             }
+
+            // display user details ajax request
+            $('body').on('click', '.userDetailsIcon', function(e){
+                e.preventDefault();
+
+                details_id = $(this).attr('id');
+
+                $.ajax({
+                    url : 'assets/php/admin-action.php',
+                    method : 'post',
+                    data : { details_id : details_id },
+                    success : function(response){
+                        data = JSON.parse(response);
+
+                        $('#getName').text(data.name + ' ' + '(ID : ' + data.id + ')');
+                        $('#getEmail').html('<p3 class="text-light fw-bold fs-6">Email : </p3> ' + data.email);
+                        // $('#getPhone').text('Phone : ' + data.phone);
+                        // $('#getDOB').text('DOB : ' + data.dob);
+                        // $('#getGender').text('Gender : ' + data.gender);
+                        // $('#getCreated').text('Created : ' + data.created_at);
+                        // $('#getVerified').text('Verified : ' + data.verified);
+
+                        $('#getPhone').html('<p3 class="text-light fw-bold fs-6">Phone :</p3> ' + data.phone);
+                        $('#getDOB').html('<p3 class="text-light fw-bold fs-6">DOB :</p3> : ' + data.dob);
+                        $('#getGender').html('<p3 class="text-light fw-bold fs-6">Gender :</p3> ' + data.gender);
+                        $('#getCreated').html('<p3 class="text-light fw-bold fs-6">Joined On :</p3> ' + data.created_at);
+                        $('#getVerified').html('<p3 class="text-light fw-bold fs-6">Verified :</p3> ' + data.verified);
+
+                        if (data.photo != '') {
+                            $('#getImage').html('<img src="../assets/php/'+ data.photo +'" class="img-thumbnail img-fluid align-self-center" style="width : 100%; height : 274px">');
+                        } else {
+                            $('#getImage').html('<img src="../assets/img/avatar2.jpg" class="img-thumbnail img-fluid align-self-center" style="width : 100%; height : 274px">');
+                        }
+                    }
+                });
+            });
+            
         });
     </script>
 </body>

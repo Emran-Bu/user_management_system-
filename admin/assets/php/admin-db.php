@@ -78,6 +78,17 @@
             
             return $result;
         }
+
+        // Fetch user details by id
+        public function fetchUseDetailsById($id)
+        {
+            $sql = "SELECT * FROM users WHERE id = :id AND deleted != 0";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }        
     }
 
 ?>

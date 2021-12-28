@@ -50,7 +50,7 @@
                     if ($row['photo'] != '') {
                         $uphoto = $path.$row['photo'];
                     } else {
-                        $uphoto = '../assets/img/avatar.jpg';
+                        $uphoto = '../assets/img/avatar2.jpg';
                     }
                     $output .= '
                                 <tr>
@@ -75,6 +75,15 @@
         } else {
             echo '<h3 class="text-center text-secondary">:) No any user registered yet!</h3>';
         }
+    }
+
+    // handle display user details ajax request
+    if (isset($_POST['details_id'])) {
+        $id = $_POST['details_id'];
+
+        $data = $admin->fetchUseDetailsById($id);
+
+        echo json_encode($data);
     }
 
 ?>
