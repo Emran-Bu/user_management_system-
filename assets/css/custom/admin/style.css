@@ -36,3 +36,8 @@ html,body{
     margin: 0;
     transition: 0.3s all ease-in-out;
 }
+
+.modCloseBtnColor:hover{
+    background-color: #dc3545 !important;
+    transition: 0.3s all ease-in;
+}

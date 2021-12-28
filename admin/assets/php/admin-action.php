@@ -63,7 +63,7 @@
                                     <td>'.$row['dob'].'</td>
                                     <td>'.$row['verified'].'</td>
                                     <td>
-                                        <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userDetailsIcon"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
+                                        <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userDetailsIcon" data-bs-toggle="modal"data-bs-target="#showUserDetailsModal"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
 
                                         <a href="#" id="'.$row['id'].'" title="Delete Users" class="text-danger text-decoration-none userDeleteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
                                     </td>
