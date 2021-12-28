@@ -195,7 +195,7 @@
                                     <td>'.$row['name'].'</td>
                                     <td>'.$row['email'].'</td>
                                     <td>'.$row['title'].'</td>
-                                    <td>'.$row['note'].'</td>
+                                    <td>'.substr($row['note'], 0, 75).'...</td>
                                     <td>'.$row['created_at'].'</td>
                                     <td>'.$row['updated_at'].'</td>
                                     <td>
