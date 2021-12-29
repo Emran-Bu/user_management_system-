@@ -71,6 +71,7 @@
                     <a href="#" class="list-group-item text-light admin-link"><i class="fas fa-cog"></i>&nbsp;&nbsp;Setting</a>
                 </div>
             </div>
+
             <div class="col">
                 <div class="row">
                     <div class="col-lg-12 bg-primary pt-2 justify-content-between d-flex">
@@ -80,7 +81,8 @@
 
                         <a class="text-light text-decoration-none mt-1" href="assets/php/logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
 
-                        <!-- <ul class="navbar-nav">
+                        <!-- different logout system d-none/d-block -->
+                        <ul class="navbar-nav d-none">
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown">
                                     <i class="fa fa-user-cog">&nbsp;Hi! Emran</i>
@@ -89,7 +91,7 @@
                                     <li><a href="assets/php/logout.php" class="text-danger dropdown-item"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a></li>
                                 </ul>
                             </li>
-                        </ul> -->
+                        </ul>
 
                     </div>
                     <!-- 2nd row -->
