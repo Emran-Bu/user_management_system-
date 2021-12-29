@@ -185,6 +185,16 @@
             return true;
         }
 
+        // fetch all users from db
+        public function exportAllUsers()
+        {
+            $sql = "SELECT * FROM users";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $return = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $return;
+        }
+
     }
 
 ?>

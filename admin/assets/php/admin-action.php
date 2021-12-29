@@ -327,4 +327,48 @@
         $admin->removeNotification($id);
     }
 
+    // handle export all users in excel
+    if (isset($_GET['export']) && $_GET['export'] == 'excel') {
+        header("Content-Type: application/xls");
+        header("Content-Disposition: attachment; filename=users.xls");
+        header("Pragma: no-cache");
+        header("Expire: 0");
+
+        $data = $admin->exportAllUsers();
+        echo '
+                <table border="1" align="center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>E-Mail</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>DOB</th>
+                            <th>Joined On</th>
+                            <th>Verified</th>
+                            <th>Deleted</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                foreach($data as $row){
+                    echo '
+                        <tr>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['email'].'</td>
+                            <td>'.$row['phone'].'</td>
+                            <td>'.$row['gender'].'</td>
+                            <td>'.$row['dob'].'</td>
+                            <td>'.$row['created_at'].'</td>
+                            <td>'.$row['verified'].'</td>
+                            <td>'.$row['deleted'].'</td>
+                        </tr>
+                    ';
+                }
+
+        echo '</tbody>
+            </table>';
+    }
+
 ?>
