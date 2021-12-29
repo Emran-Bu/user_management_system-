@@ -228,4 +228,22 @@
         $id = $_POST['notification_id'];
         $cuser->removeNotification($id);
     }
+
+    // handle send permanent Delete User to user ajax request
+    if (isset($_POST['del_email_id'])) {
+        $email = $_POST['del_email_id'];
+        $pass = $_POST['pass'];
+        $conpass = $_POST['cpass'];
+
+        if ($pass != $conpass) {
+            echo 'Password Did Not Matched!';
+        } else {
+            if (password_verify($pass, $cpass)) {
+                $cuser->permanentDeleteUser($email);
+            } else {
+                echo 'Password is Wrong!';
+            }
+        }
+
+    }
 ?>

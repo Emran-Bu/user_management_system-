@@ -182,6 +182,15 @@
             $stmt->execute(['id'=>$id]);
             return true;
         }
+
+        // send permanent Delete User to user
+        public function permanentDeleteUser($email)
+        {
+            $sql = "DELETE FROM users WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email'=>$email]);
+            return true;
+        }
     }
 
 ?>
