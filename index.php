@@ -80,7 +80,7 @@
                         <hr class="my-3 myHr">
                         <p class="text-center text-light fw-bolder lead">Enter your personal details and start your journey with us!</p>
                         <div class="text-center">
-                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 w-50 rounded-pill myLinkBtn" id="login-link">Sign Up</button>
+                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 rounded-pill myLinkBtn" id="login-link">Sign Up</button>
                         </div>
                     </div>
                     <!-- 2nd card end -->
@@ -100,7 +100,7 @@
                         <hr class="my-3 myHr">
                         <p class="text-center text-light fw-bolder lead my-3">To keep connected with us please login with your personal info!</p>
                         <div class="text-center">
-                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 w-50 rounded-pill myLinkBtn" id="register-link">Sign In</button>
+                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 rounded-pill myLinkBtn" id="register-link">Sign In</button>
                         </div>
                     </div>
                     <!-- first card End-->
@@ -162,7 +162,7 @@
                         <hr class="my-3 myHr">
                         
                         <div class="text-center">
-                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 w-50 rounded-pill myLinkBtn" id="back-link">Back</button>
+                            <button class="btn btn-outline-light btn-lg fw-bolder mt-4 rounded-pill myLinkBtn" id="back-link">Back</button>
                         </div>
                     </div>
                     <!-- first card end -->
