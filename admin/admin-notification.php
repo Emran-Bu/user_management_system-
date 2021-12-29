@@ -1,7 +1,9 @@
 <?php require_once 'assets/php/admin-header.php'; ?>
 
-<div class="row">
-    .di
+<div class="row justify-content-center my-2">
+    <div class="col-lg-6 mt-4" id="showAllNotification">
+
+    </div>
 </div>
 <!-- footer part -->
                 <!-- 2nd col -->
@@ -20,10 +22,10 @@
                     method : 'post',
                     data : { action: 'fetchAllNotification' },
                     success : function(response){
-                        $("#showAllNotification").html(response);
-                        $('table').DataTable({
-                            order : [0, 'desc']
-                        });
+                        // $("#showAllNotification").html(response);
+                        // $('table').DataTable({
+                        //     order : [0, 'desc']
+                        // });
                     }
                 });
             }

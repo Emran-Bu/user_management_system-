@@ -184,6 +184,7 @@
         $cuser->notification($cid, 'Admin', 'Feedback written');
 
     }
+    
     // handle fetch notification of an user
     if(isset($_POST['action']) && $_POST['action'] == 'fetchNotification'){
         $notification = $cuser->fetchNotification($cid);
