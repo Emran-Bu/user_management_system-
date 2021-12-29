@@ -60,7 +60,7 @@
 
                     <a href="admin-feedback.php" class="list-group-item text-light admin-link <?= (basename($_SERVER['PHP_SELF']) == 'admin-feedback.php') ? 'nav-active' : '' ?>"><i class="fas fa-comment"></i>&nbsp;&nbsp;Feedback</a>
 
-                    <a href="admin-notification.php" class="list-group-item text-light admin-link <?= (basename($_SERVER['PHP_SELF']) == 'admin-notification.php') ? 'nav-active' : '' ?>"><i class="fas fa-bell"></i>&nbsp;&nbsp;Notification</a>
+                    <a href="admin-notification.php" class="list-group-item text-light admin-link <?= (basename($_SERVER['PHP_SELF']) == 'admin-notification.php') ? 'nav-active' : '' ?>"><i class="fas fa-bell"></i>&nbsp;&nbsp;Notification<span id="checkNotification" class="d-inline-block"></span></a>
 
                     <a href="admin-deleteuser.php" class="list-group-item text-light admin-link <?= (basename($_SERVER['PHP_SELF']) == 'admin-deleteuser.php') ? 'nav-active' : '' ?>"><i class="fas fa-user-slash"></i>&nbsp;&nbsp;Deleted Users</a>
 

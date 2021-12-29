@@ -309,4 +309,16 @@
         }
     }
 
+    // handle check notification
+    if(isset($_POST['action']) && $_POST['action'] == 'checkNotification'){
+        $countNotification =  $admin->fetchNotification();
+        if ($countNotification) {
+            echo '
+                <p class="bg-danger d-inline-block rounded-circle fw-bold" style="height: 16px; width: 16px; font-size: 10px; vertical-align: top;  margin-top: -5px"><span class="text-center d-flex justify-content-center">'.count($countNotification).'</span></p>
+                ';
+        } else {
+            echo '';
+        }
+    }
+
 ?>
