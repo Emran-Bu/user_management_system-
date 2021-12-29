@@ -165,6 +165,17 @@
             return true;
         }
 
+        // fetch all notification with user info
+        public function fetchAllNotification()
+        {
+            $sql = "SELECT n.id, n.message, n.created_at, u.name, u.email FROM notification n INNER JOIN users u ON n.uid = u.id WHERE type = 'admin'";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
     }
 
 ?>
