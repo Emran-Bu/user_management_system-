@@ -1,7 +1,7 @@
 <?php require_once 'assets/php/admin-header.php'; ?>
 
 <div class="row justify-content-center my-2">
-    <div class="col-lg-6 mt-4" id="showAllNotification">
+    <div class="col-lg-6 mt-4" id="showNotification">
 
     </div>
 </div>
@@ -14,18 +14,16 @@
     </div>
     <script>
         $(document).ready(function(){
-            // fetch all notification ajax request
-            fetchAllNotification();
-            function fetchAllNotification(){
+            // fetch notification ajax request
+            fetchNotification();
+            function fetchNotification(){
                 $.ajax({
                     url : 'assets/php/admin-action.php',
                     method : 'post',
-                    data : { action: 'fetchAllNotification' },
+                    data : { action: 'fetchNotification' },
                     success : function(response){
-                        // $("#showAllNotification").html(response);
-                        // $('table').DataTable({
-                        //     order : [0, 'desc']
-                        // });
+                        $("#showNotification").html(response);
+                        // console.log(response);
                     }
                 });
             }
