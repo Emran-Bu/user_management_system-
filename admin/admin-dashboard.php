@@ -163,6 +163,21 @@
         var chart = new google.visualization.PieChart(document.getElementById('chartVerified'));
         chart.draw(data, options);
       }
+
+      $(document).ready(function(){
+            // check notification
+            checkNotification();
+            function checkNotification(){
+                $.ajax({
+                    url : 'assets/php/admin-action.php',
+                    method : 'post',
+                    data : { action : 'checkNotification' },
+                    success : function(response){
+                        $("#checkNotification").html(response);
+                    }
+                });
+            }
+      });
     </script>
     
 </body>
