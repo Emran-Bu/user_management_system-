@@ -41,6 +41,22 @@
                 });
             }
 
+            // remove notification
+            $("body").on('click', '.btn-close', function(e){
+                e.preventDefault();
+                notification_id = $(this).attr('id');
+
+                $.ajax({
+                    url : 'assets/php/admin-action.php',
+                    method : 'post',
+                    data : { notification_id : notification_id },
+                    success : function(response){
+                        fetchNotification();
+                        checkNotification();
+                    }
+                });
+            });
+
         });
     </script>
 </body>

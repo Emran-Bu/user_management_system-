@@ -176,6 +176,15 @@
             return $result;
         }
 
+        // remove Notification
+        public function removeNotification($id)
+        {
+            $sql = "DELETE FROM notification WHERE id = :id AND type = 'Admin'";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            return true;
+        }
+
     }
 
 ?>

@@ -321,4 +321,10 @@
         }
     }
 
+    // handle remove notification
+    if (isset($_POST['notification_id'])) {
+        $id = $_POST['notification_id'];
+        $admin->removeNotification($id);
+    }
+
 ?>
