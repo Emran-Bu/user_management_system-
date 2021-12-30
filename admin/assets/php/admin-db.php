@@ -165,6 +165,15 @@
             return true;
         }
 
+        // send feedback Delete User to admin
+        public function feedbackDeleteByAdmin($id)
+        {
+            $sql = "DELETE FROM feedback WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            return true;
+        }
+
         // fetch notification with user info
         public function fetchNotification()
         {

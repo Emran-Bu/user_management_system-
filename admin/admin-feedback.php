@@ -101,6 +101,43 @@
                 }
             });
 
+
+            // delete an feedback ajax request
+            $('body').on('click', '.userFeedbackDeleteIcon', function(e){
+            e.preventDefault();
+
+            feedback_del_id = $(this).attr('id');
+
+            Swal.fire({
+            title: 'Are you sure?<br>Delete This Feedback!',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                url : 'assets/php/admin-action.php',
+                method : 'post',
+                data : { feedback_del_id : feedback_del_id },
+                success : function (response){
+                    Swal.fire(
+                    'Deleted!',
+                    'feedback deleted successfully!',
+                    'success'
+                    )
+                    fetchAllFeedback();
+                }
+            });
+
+            }
+            });
+            });
+
             // check notification
             checkNotification();
             function checkNotification(){

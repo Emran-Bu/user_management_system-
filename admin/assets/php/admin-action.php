@@ -272,7 +272,9 @@
                                     <td>'.$row['feedback'].'</td>
                                     <td>'.$row['created_at'].'</td>
                                     <td>
-                                        <a href="#" id="'.$row['uid'].'" fid="'.$row['id'].'" title="Reply" class="text-primary text-decoration-none replyNoteIcon" data-bs-toggle="modal" data-bs-target="#showReplyModal"><i class="fas fa-reply fa-lg"></i></a>
+                                        <a href="#" id="'.$row['uid'].'" fid="'.$row['id'].'" title="Reply" class="text-primary text-decoration-none replyNoteIcon" data-bs-toggle="modal" data-bs-target="#showReplyModal"><i class="fas fa-reply fa-lg"></i>&nbsp;&nbsp;&nbsp;</a>
+
+                                        <a href="#" id="'.$row['id'].'" title="Delete User Feedback" class="text-danger text-decoration-none userFeedbackDeleteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
                                     </td>
                                 </tr>
                             ';
@@ -292,6 +294,12 @@
 
         $admin->replyFeedback($uid, $message);
         $admin->feedbackReplied($fid);
+    }
+
+    // handle delete an feedback ajax request
+    if (isset($_POST['feedback_del_id'])) {
+        $id = $_POST['feedback_del_id'];
+        $admin->feedbackDeleteByAdmin($id);
     }
 
     // handle fetch notification of admin
