@@ -77,6 +77,42 @@
             })
             })
 
+            // permanent deleted an user ajax request
+            $('body').on('click', '.permanentDeleteUserIcon', function(e){
+            e.preventDefault();
+
+            permanent_del_id = $(this).attr('id');
+
+            Swal.fire({
+            title: 'Are you sure want permanent delete this user?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                url : 'assets/php/admin-action.php',
+                method : 'post',
+                data : { permanent_del_id : permanent_del_id },
+                success : function (response){
+                    // console.log(response);
+                    Swal.fire(
+                    'Deleted!',
+                    'User Delete Successfully!',
+                    'success'
+                    )
+                    fetchAllDeletedUsers();
+                }
+            });
+
+            }
+            })
+            })
+
             // check notification
             checkNotification();
             function checkNotification(){

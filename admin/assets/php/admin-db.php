@@ -195,6 +195,15 @@
             return $return;
         }
 
+        // send permanent Delete User to admin
+        public function permanentDeleteUser($id)
+        {
+            $sql = "DELETE FROM users WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            return true;
+        }
+
     }
 
 ?>

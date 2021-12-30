@@ -147,10 +147,15 @@
                                     <td>'.$row['dob'].'</td>
                                     <td>'.$verifyIcon.'</td>
                                     <td>
-                                        <a href="#" id="'.$row['id'].'" title="Restore User" class="text-white text-decoration-none badge bg-dark restoreUserIcon">Restore</a>
+                                        <a href="#" id="'.$row['id'].'" title="Restore User" class="text-white text-decoration-none badge bg-dark restoreUserIcon">Restore</a>';
+                                        if ($_SESSION['username'] === 'emran') {
+
+                    $output .= '         
+                                        <a href="#" id="'.$row['id'].'" title="Permanent Delete This User" class="text-white text-decoration-none badge bg-danger permanentDeleteUserIcon">Permanent Delete</a>
                                     </td>
                                 </tr>
                             ';
+                                    }
                 }
             $output .= '</tbody></table>';
             echo $output;
@@ -164,6 +169,13 @@
         $id = $_POST['restore_id'];
 
         $data = $admin->userAction($id, 1);
+    }
+
+    // handle permanent delete an user details ajax request
+    if (isset($_POST['permanent_del_id'])) {
+        $id = $_POST['permanent_del_id'];
+
+        $data = $admin->permanentDeleteUser($id);
     }
 
     // handle fetch all note ajax request
