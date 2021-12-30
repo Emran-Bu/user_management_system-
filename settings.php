@@ -59,16 +59,13 @@
                         <i id="confirmPassError"></i>
                         </div>
                     </div>
-                    <!-- <div class="form-group mb-2 d-grid">
-                        <input class="btn btn-success" value="Change Password" type="submit" name="changepass" id="changePassBtn">
-                    </div> -->
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-                                <span><em><b>Note :</b> If you permanently delete your account? you lost your all notes and all stored data! you can't forget him! please sure then delete your account!</em></span>
+                                <span><em><b>Note :</b> If you permanently delete your account, you will lose your all notes and all stored data. This will never be returned. So make sure then delete your account!</em></span>
                                 <div class="mt-2 d-grid">
                                     <button class="btn btn-danger" del_email_id="<?= $cemail ?>" id="permanentDeleteUser">Delete Account</button>
                                 </div>
