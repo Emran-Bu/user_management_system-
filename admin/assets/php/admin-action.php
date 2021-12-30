@@ -151,11 +151,9 @@
                                         if ($_SESSION['username'] === 'emran') {
 
                     $output .= '         
-                                        <a href="#" id="'.$row['id'].'" title="Permanent Delete This User" class="text-white text-decoration-none badge bg-danger permanentDeleteUserIcon">Permanent Delete</a>
-                                    </td>
-                                </tr>
-                            ';
+                                        <a href="#" id="'.$row['id'].'" title="Permanent Delete This User" class="text-white text-decoration-none badge bg-danger permanentDeleteUserIcon">Permanent Delete</a>';
                                     }
+                    $output .= '</td></tr>'; 
                 }
             $output .= '</tbody></table>';
             echo $output;
@@ -211,12 +209,12 @@
                                     <td>'.$row['created_at'].'</td>
                                     <td>'.$row['updated_at'].'</td>
                                     <td>
-                                        <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userNotesDetailsIcon"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>
-
-                                        <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger text-decoration-none deleteNoteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>
-                                    </td>
-                                </tr>
-                            ';
+                                        <a href="#" id="'.$row['id'].'" title="View Details" class="text-primary text-decoration-none userNotesDetailsIcon"><i class="fas fa-info-circle fa-lg"></i>&nbsp;</a>';
+                                        if ($_SESSION['username'] === 'emran') {
+                    $output .='
+                                        <a href="#" id="'.$row['id'].'" title="Delete Note" class="text-danger text-decoration-none deleteNoteIcon"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;</a>';
+                                        }
+                    $output .= '</td></tr>';             
                 }
             $output .= '</tbody></table>';
             echo $output;
